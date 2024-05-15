@@ -1,0 +1,72 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Edit <%= resource_name.to_s.humanize %></h2>
+  </div>
+
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-sm">
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "space-y-6" }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div>
+      <%= f.label :email, class: "block text-sm font-medium leading-6 text-gray-900" %>
+      <div class="mt-2">
+        <%= f.email_field :email, autofocus: true, required: true, autocomplete: "email", id: "email", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6" %>
+      </div>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div>
+      <div class="items-center justify-between">
+        <%= f.label :password, class: "block text-sm font-medium leading-6 text-gray-900" %>
+        <div class="flex justify-between">
+          <i class="text-xs">Leave blank if you don't want to change it</i>
+          <% if @minimum_password_length %>
+            <em class="text-xs">(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+        </div>
+      </div>
+      <div class="mt-2">
+        <%= f.password_field :password, id: "password", required: true, autocomplete: "new-password", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6" %>
+      </div>
+    </div>
+
+    <div>
+      <div class="flex items-center justify-between">
+        <%= f.label :password_confirmation, "Confirm Password", class: "block text-sm font-medium leading-6 text-gray-900" %>
+      </div>
+      <div class="mt-2">
+        <%= f.password_field :password_confirmation, id: "password_confirmation", required: true, autocomplete: "new-password", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6" %>
+      </div>
+    </div>
+
+    <div>
+      <div class="items-center justify-between">
+        <%= f.label :current_password, class: "block text-sm font-medium leading-6 text-gray-900" %>
+        <div class="flex justify-between">
+          <i class="text-xs">We need your current password to confirm your changes</i>
+        </div>
+      </div>
+      <div class="mt-2">
+        <%= f.password_field :current_password, id: "current-password", required: true, autocomplete: "current-password", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6" %>
+      </div>
+    </div>
+
+    <div>
+      <%= f.submit "Update", class: "flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600" %>
+    </div>
+  <% end %>
+  
+  <div class="mt-8">
+    <%= button_to "Cancel my account",
+        registration_path(resource_name),
+        data: { confirm: "Are you sure want to cancel your account?", 
+        turbo_confirm: "Are you sure cancel your account?" },
+        class: "bg-red-100 text-red-700 py-3 px-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-red-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-200 flex w-full justify-center rounded-md",
+        method: :delete %>
+  </div>
+</div>
+
