@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :authorizations
+  has_many :billing_accounts
   # Include default devise modules. Others available are:
   #   and :omniauthable
   devise :confirmable, 
