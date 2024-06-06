@@ -2,14 +2,13 @@
 
 module Meter::FetchOne
   class << self
-    def call(params, bill_id: nil, user_id: , bill_response: nil)
+    def call(params, bill_id: nil, bill_response: nil)
       raw_meters = fetch_raw_meters(params)
 
       new_meters_from(raw_meters).each do |meter_response|
-        # when meters are empty?
         meter = Meter::Add.call(meter_response)
-        Bill:FetchOne.call({ meter: meter.external_uid }, meter_id: meter.id) unless bill_id
-        BillingAccount::Add.call(meter_id, bill_id, user_id, bill_response) if bill_id
+        Bill::FetchOne.call({ meters: meter.external_uid }, meter_id: meter.id) unless bill_id
+        BillingAccount::Add.call(meter.id, bill_id, bill_response) if bill_id
       end
     end
 

@@ -2,24 +2,19 @@
 
 module Bill::FetchOne
   class << self
-    def call(params, meter_id: nil, user_id:)
+    def call(params, meter_id: nil)
       raw_bills = fetch_raw_bills(params)
 
       new_bills_from(raw_bills).each do |bill_response|
         bill = Bill::Add.call(bill_response)
-        binding.b
-        # meter_id = if Meter.find_by(external_uid: bill_response[:meter_uid]).id -> add billingAccount
-        # Meter:FetchOne.call(uid: bill_response[:meter_uid], bill: bill.id) unless meter_id
-        # BillingAccount::Add.call(meter_id, bill.id, user_id) if meter_id
-        #
 
-        unless meter_id
-          return meter_id = if Meter.find_by(external_uid: bill_response[:meter_uid]).id
-          Meter:FetchOne.call({ uid: bill_response[:meter_uid] }, bill: bill.id, user_id:, bill_response: bill_response)
+        unless meter_id # clean this up
+          meter_id = Meter.find_by(external_uid: bill_response[:meter_uid])&.id
+          unless meter_id
+            Meter::FetchOne.call({ uids: bill_response[:meter_uid] }, bill_id: bill.id, bill_response:)
+          end
         end
-
-        BillingAccount::Add.call(meter_id, bill.id, user_id, bill_response) if meter_id
-
+        BillingAccount::Add.call(meter_id, bill.id, bill_response) if meter_id
       end
     end
 
@@ -31,7 +26,7 @@ module Bill::FetchOne
     end
 
     def new_bills_from(raw_bills)
-      Meter::FindNewbills.call(raw_bills)
+      Bill::FindNewBills.call(raw_bills)
     end
 
     def connection

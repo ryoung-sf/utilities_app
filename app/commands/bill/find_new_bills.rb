@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Bill::FindNewMeters
+module Bill::FindNewBills
   class << self
     def call(raw_bills)
       bills = []

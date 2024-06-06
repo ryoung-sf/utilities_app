@@ -23,19 +23,21 @@
         <dt class="text-sm font-medium text-xl leading-6 text-gray-900">First Name Last Name</dt>
         <dd class="text-sm w-full font-medium leading-6 text-gray-900">Street</dd>
         <dd class="text-sm w-full font-medium leading-6 text-gray-900">City, State Zip</dd>
-        <dd class="text-xs font-medium leading-6 text-gray-900"><%= @meters[:body][:base][:billing_account] %></dd>
+        <dd class="text-xs font-medium leading-6 text-gray-900"><%= @meters.first.billing_account.utility_account_id %></dd>
       </div>
       <div class="flex items-baseline flex-wrap justify-between gap-y-2 gap-x-4 rounded-lg px-4 py-4 sm:px-6 border-t-0 xl:px-8 bg-teal-500">
         <dt class="text-sm font-medium leading-6 text-white">Recent Bill (PDF)</dt>
         <dd class="text-xs font-medium text-rose-800">+54.02%</dd>
-        <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-white">$12,787.00</dd>
-        <dd class="text-xs font-medium text-white">Jan 10, 2024 - Feb 09, 2024</dd>
+        <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-white">
+          <%= humanized_money_with_symbol (@bills.first.total_cost) %>
+        </dd>
+        <dd class="text-xs font-medium text-white"><%= @bills.first.start_date %> - <%= @bills.first.end_date %></dd>
       </div>
       <div class="flex items-baseline flex-wrap justify-between gap-y-2 gap-x-4 rounded-lg px-4 py-4 sm:px-6 lg:border-t-0 xl:px-8 bg-teal-700">
         <dt class="text-sm font-medium leading-6 text-white">kWh Usage</dt>
         <dd class="text-xs font-medium text-rose-400">+54.02%</dd>
-        <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-white">1,872</dd>
-        <dd class="text-xs font-medium text-white">Jan 10, 2024 - Feb 09, 2024</dd>
+        <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-white"><%= @bills.first.total_kwh_times_100 / 100%></dd>
+        <dd class="text-xs font-medium text-white"><%= @bills.first.start_date %> - <%= @bills.first.end_date %></dd>
       </div>
     </dl>
   </div>
@@ -61,17 +63,15 @@
 
     <main class="flex-1">
       <!-- Main area -->
-      <% @intervals[:body][:intervals].each do |interval| %>
-        <% interval[:readings].each do |reading| %>
-          <p><%= reading[:start] %></p>
-        <% end %>
+      <% @meters.first.intervals.each do |interval| %>
+        <p><%= interval.start_date %></p>
       <% end %>
     </main>
 
     <aside class="sticky top-8 hidden w-96 shrink-0 xl:block">
       <!-- Right column area -->
-      <% @bills[:body][:bills].each do |bill| %>
-        <p><%= bill[:base][:bill_statement_date] %></p>
+      <% @bills.each do |bill| %>
+        <p><%= bill.end_date %></p>
       <% end %>
     </aside>
   </div>

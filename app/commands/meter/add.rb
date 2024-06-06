@@ -15,6 +15,7 @@ module Meter::Add
         authorization_id: Authorization.find_by(external_uid: meter[:authorization_uid]).id,
       )
 
+      Interval::FetchOne.call({meters: meter.external_uid}, meter_id: meter.id) if meter.persisted?
       meter
     end
   end

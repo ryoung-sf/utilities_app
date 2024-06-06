@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_03_000434) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_06_022146) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -63,7 +63,35 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_03_000434) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "authorization_id", null: false
+    t.datetime "statement_date"
     t.index ["authorization_id"], name: "index_bills_on_authorization_id"
+  end
+
+  create_table "intervals", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "external_uid", null: false
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
+    t.string "unit", null: false
+    t.integer "value_times_1000", default: 0, null: false
+    t.string "volume_type", null: false
+    t.uuid "meter_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meter_id"], name: "index_intervals_on_meter_id"
+  end
+
+  create_table "line_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "cost_cents", null: false
+    t.datetime "end_date", null: false
+    t.datetime "start_date", null: false
+    t.string "name", null: false
+    t.integer "rate_times_10000"
+    t.string "unit"
+    t.integer "volume_times_100"
+    t.uuid "bill_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_line_items_on_bill_id"
   end
 
   create_table "meters", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -112,5 +140,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_03_000434) do
   add_foreign_key "billing_accounts", "meters"
   add_foreign_key "billing_accounts", "users"
   add_foreign_key "bills", "authorizations"
+  add_foreign_key "intervals", "meters"
+  add_foreign_key "line_items", "bills"
   add_foreign_key "meters", "authorizations"
 end

@@ -2,7 +2,7 @@
 
 module BillingAccount::Add
   class << self
-    def call(meter_id, bill_id, user_id, bill_response)
+    def call(meter_id, bill_id, bill_response)
       return if exists?(meter_id, bill_id)
       
       billing_account = BillingAccount.create(
@@ -10,7 +10,7 @@ module BillingAccount::Add
         contact_name: bill_response[:base][:billing_contact],
         meter_id:,
         bill_id:,
-        user_id: user_id,
+        user_id: set_user_id(bill_response),
       )
       
       billing_account
@@ -20,7 +20,10 @@ module BillingAccount::Add
 
     def exists?(meter_id, bill_id)
       BillingAccount.exists?(meter_id:, bill_id:)
-      @billing_account_id ||= BillingAccount.find_by(authorization_id: set_authorization(meter).id)&.id
+    end
+
+    def set_user_id(bill_response)
+      Authorization.find_by(external_uid: bill_response[:authorization_uid]).user.id
     end
   end
 end
