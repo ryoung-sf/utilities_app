@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module UtilityApi
-  module Bills
+  module Authorizations
     class GetList < ApplicationService
       def initialize(params)
         @params = params
@@ -9,11 +9,11 @@ module UtilityApi
       end
 
       def call
-        @connection.list_bills(@params)
+        @connection.list_authorizations(@params)
       end
 
       private
-      
+
       def faraday_connection
         @faraday_connection ||= UtilityApi::V2::Client.new
       end

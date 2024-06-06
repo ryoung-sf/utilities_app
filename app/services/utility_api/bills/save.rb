@@ -9,7 +9,7 @@ module UtilityApi
 
       def call
         # response = UtilityApi::Meters::Get.call(@meter_id, faraday_connection)
-        UtilityApi::Bills::GetList.call(@params, faraday_connection)
+        UtilityApi::Bills::GetList.call(@params)
         
       end
 

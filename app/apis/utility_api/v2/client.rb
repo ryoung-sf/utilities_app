@@ -27,6 +27,10 @@ module UtilityApi
         request(http_method: :get, endpoint: "intervals", body: params)
       end
 
+      def list_authorizations(params)
+        request(http_method: :get, endpoint: "authorizations", body: params)
+      end
+
       private
 
       def client

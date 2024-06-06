@@ -1,5 +1,5 @@
 <% flash.each do |key, value| %>
-  <% unless key.to_s == "timedout" %>
+  <% unless key.to_s == "timedout" && value == true %>
     <div data-controller="flash" class="flex mx-auto top-5 <%= classes_for_flash(key) %> py-3 px-4 sm:px-6 lg:px-8 rounded-lg">
       <button type="button" data-action="flash#dismiss">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

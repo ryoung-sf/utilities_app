@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  has_many :authorizations
+  has_many :billing_accounts
+  has_many :bills, through: :billing_accounts
+  has_many :meters, through: :billing_accounts
   # Include default devise modules. Others available are:
   #   and :omniauthable
   devise :confirmable, 
@@ -16,7 +20,7 @@ end
 #
 # Table name: users
 #
-#  id                     :bigint           not null, primary key
+#  id                     :uuid             not null, primary key
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
