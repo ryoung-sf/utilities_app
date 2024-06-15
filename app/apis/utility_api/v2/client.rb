@@ -31,6 +31,14 @@ module UtilityApi
         request(http_method: :get, endpoint: "authorizations", body: params)
       end
 
+      def billing_accounts(params)
+        request(http_method: :get, endpoint: "accounting/billing-accounts", body: params)
+      end
+
+      def create_form(params)
+        request(http_method: :post, endpoint: "forms", body: params)
+      end
+
       private
 
       def client

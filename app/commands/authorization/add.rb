@@ -3,7 +3,7 @@
 module Authorization::Add
   class << self
     def call(auth, user_id)
-      authorization = Authorization.create(
+      Authorization.create(
         external_uid: auth[:uid],
         submitted_date: auth[:created],
         customer_email: auth[:customer_email],

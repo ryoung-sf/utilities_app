@@ -1,23 +1,45 @@
 require 'rails_helper'
 
 RSpec.describe Meter, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  def create_meter(params: {})
+    params[:billing_account_id] = create(:billing_account).id unless params[:billing_account_id]
+    create(:meter, params)
+  end
+
+  describe "associations" do
+    it "should belong to a billing_account" do
+      meter = create_meter
+
+      expect(meter).to belong_to(:billing_account)
+    end
+
+    it "should have many intervals" do
+      meter = create_meter
+      expect(meter).to have_many(:intervals).dependent(:destroy)
+    end
+
+    it "should have many bills" do
+      meter = create_meter
+      expect(meter).to have_many(:bills).through(:billing_account)
+    end
+  end
 end
 
 # == Schema Information
 #
 # Table name: meters
 #
-#  id               :uuid             not null, primary key
-#  external_uid     :string           not null
-#  service_class    :string
-#  service_id       :string           not null
-#  service_tariff   :string
-#  created_date     :datetime         not null
-#  utility_meter_id :string           not null
-#  status_date      :datetime         not null
-#  status           :string
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  authorization_id :uuid             not null
+#  id                 :uuid             not null, primary key
+#  external_uid       :string           not null
+#  service_class      :string
+#  service_id         :string           not null
+#  service_tariff     :string
+#  created_date       :datetime         not null
+#  utility_meter_id   :string           not null
+#  status_date        :datetime         not null
+#  status             :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  billing_account_id :uuid             not null
 #

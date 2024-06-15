@@ -1,0 +1,12 @@
+<div>
+  <h1 class="font-bold text-4xl">RequestForms#new</h1>
+  <p>It looks like you don't have any accounts. Let's add one!</p>
+</div>
+ 
+ <%= form_with url: request_forms_path, method: :post do |f| %>
+  <%= f.label :customer_email, "Email" %>
+  <%= f.email_field :customer_email, placeholder: current_user.email, value: current_user.email %>
+  <%= f.label :utility %>
+  <%= f.text_field :utility, placeholder: "PGE" %>
+  <%= f.submit "Authorize!" %>
+ <% end %>

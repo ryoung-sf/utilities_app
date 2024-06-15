@@ -12,6 +12,7 @@
         <span class="sr-only">Your profile</span>
         <img class="h-8 w-8 rounded-full bg-gray-800" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
       </a>
+      <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
     </div>
   </div>
 </header>
@@ -23,21 +24,21 @@
         <dt class="text-sm font-medium text-xl leading-6 text-gray-900">First Name Last Name</dt>
         <dd class="text-sm w-full font-medium leading-6 text-gray-900">Street</dd>
         <dd class="text-sm w-full font-medium leading-6 text-gray-900">City, State Zip</dd>
-        <dd class="text-xs font-medium leading-6 text-gray-900"><%= @meters.first.billing_account.utility_account_id %></dd>
+        <dd class="text-xs font-medium leading-6 text-gray-900">Billing Account No</dd>
       </div>
       <div class="flex items-baseline flex-wrap justify-between gap-y-2 gap-x-4 rounded-lg px-4 py-4 sm:px-6 border-t-0 xl:px-8 bg-teal-500">
         <dt class="text-sm font-medium leading-6 text-white">Recent Bill (PDF)</dt>
         <dd class="text-xs font-medium text-rose-800">+54.02%</dd>
         <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-white">
-          <%= humanized_money_with_symbol (@bills.first.total_cost) %>
+          $20.99
         </dd>
-        <dd class="text-xs font-medium text-white"><%= @bills.first.start_date %> - <%= @bills.first.end_date %></dd>
+        <dd class="text-xs font-medium text-white">Jan 10, 2022 - Feb 9, 2022</dd>
       </div>
       <div class="flex items-baseline flex-wrap justify-between gap-y-2 gap-x-4 rounded-lg px-4 py-4 sm:px-6 lg:border-t-0 xl:px-8 bg-teal-700">
         <dt class="text-sm font-medium leading-6 text-white">kWh Usage</dt>
         <dd class="text-xs font-medium text-rose-400">+54.02%</dd>
-        <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-white"><%= @bills.first.total_kwh_times_100 / 100%></dd>
-        <dd class="text-xs font-medium text-white"><%= @bills.first.start_date %> - <%= @bills.first.end_date %></dd>
+        <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-white">100 kWh</dd>
+        <dd class="text-xs font-medium text-white">Jan 10, 2022 - Feb 9, 2022</dd>
       </div>
     </dl>
   </div>
@@ -63,17 +64,13 @@
 
     <main class="flex-1">
       <!-- Main area -->
-      <% @meters.first.intervals.each do |interval| %>
-        <p><%= interval.start_date %></p>
-      <% end %>
+      <#% @meters.first.intervals.each do |interval|
+      Intervals
     </main>
 
     <aside class="sticky top-8 hidden w-96 shrink-0 xl:block">
       <!-- Right column area -->
-      <% @bills.each do |bill| %>
-        <p><%= bill.end_date %></p>
-      <% end %>
+      List of past
     </aside>
   </div>
 </div>
-

@@ -1,7 +1,12 @@
 class BillingAccount < ApplicationRecord
   belongs_to :user
-  belongs_to :bill
-  belongs_to :meter
+  belongs_to :authorization
+
+  has_many :bills, dependent: :destroy
+  has_many :meters, dependent: :destroy
+
+  validates :external_uid, presence: true
+  validates :utility_account_id, presence: true
 end
 
 # == Schema Information
@@ -14,6 +19,6 @@ end
 #  user_id            :uuid             not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  meter_id           :uuid             not null
-#  bill_id            :uuid             not null
+#  external_uid       :string
+#  authorization_id   :uuid             not null
 #

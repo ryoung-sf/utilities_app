@@ -1,9 +1,11 @@
 FactoryBot.define do
   factory :billing_account do
-    utility_number { "MyString" }
-    contact_name { "MyString" }
-    user { nil }
-    authorization { nil }
+    transient { auth { create(:authorization) } }
+    utility_account_id { "194500235561" }
+    contact_name { "General Services Corp" }
+    external_uid { "20113" }
+    user { auth.user }
+    authorization { auth }
   end
 end
 
@@ -17,6 +19,6 @@ end
 #  user_id            :uuid             not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  meter_id           :uuid             not null
-#  bill_id            :uuid             not null
+#  external_uid       :string
+#  authorization_id   :uuid             not null
 #

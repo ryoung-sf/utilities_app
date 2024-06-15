@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_06_022146) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_07_020234) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -44,10 +44,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_022146) do
     t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "meter_id", null: false
-    t.uuid "bill_id", null: false
-    t.index ["bill_id"], name: "index_billing_accounts_on_bill_id"
-    t.index ["meter_id"], name: "index_billing_accounts_on_meter_id"
+    t.string "external_uid"
+    t.uuid "authorization_id", null: false
+    t.index ["authorization_id"], name: "index_billing_accounts_on_authorization_id"
     t.index ["user_id"], name: "index_billing_accounts_on_user_id"
   end
 
@@ -62,9 +61,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_022146) do
     t.string "raw_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "authorization_id", null: false
     t.datetime "statement_date"
-    t.index ["authorization_id"], name: "index_bills_on_authorization_id"
+    t.uuid "billing_account_id", null: false
+    t.index ["billing_account_id"], name: "index_bills_on_billing_account_id"
   end
 
   create_table "intervals", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -105,8 +104,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_022146) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "authorization_id", null: false
-    t.index ["authorization_id"], name: "index_meters_on_authorization_id"
+    t.uuid "billing_account_id", null: false
+    t.index ["billing_account_id"], name: "index_meters_on_billing_account_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -136,11 +135,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_022146) do
   end
 
   add_foreign_key "authorizations", "users"
-  add_foreign_key "billing_accounts", "bills"
-  add_foreign_key "billing_accounts", "meters"
+  add_foreign_key "billing_accounts", "authorizations"
   add_foreign_key "billing_accounts", "users"
-  add_foreign_key "bills", "authorizations"
+  add_foreign_key "bills", "billing_accounts"
   add_foreign_key "intervals", "meters"
   add_foreign_key "line_items", "bills"
-  add_foreign_key "meters", "authorizations"
+  add_foreign_key "meters", "billing_accounts"
 end

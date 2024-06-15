@@ -6,7 +6,12 @@ module Bill::FetchOne
       raw_bills = fetch_raw_bills(params)
 
       new_bills_from(raw_bills).each do |bill_response|
-        bill = Bill::Add.call(bill_response)
+        # api_meter_id = bill_response[:meter_id]
+        # meter = Meter.find_by(external_uid: api_meter_id)
+        # meter ||= Meter::FetchOne.call
+        # if meter_id
+
+        
 
         unless meter_id # clean this up
           meter_id = Meter.find_by(external_uid: bill_response[:meter_uid])&.id

@@ -2,15 +2,13 @@
 
 module BillingAccount::Add
   class << self
-    def call(meter_id, bill_id, bill_response)
-      return if exists?(meter_id, bill_id)
-      
+    def call(billing_account_response)
       billing_account = BillingAccount.create(
-        utility_account_id: bill_response[:base][:billing_account],
-        contact_name: bill_response[:base][:billing_contact],
-        meter_id:,
-        bill_id:,
-        user_id: set_user_id(bill_response),
+        external_uid: billing_account_response[:uid],
+        utility_account_id: billing_account_response[:base][:billing_account],
+        contact_name: billing_account_response[:base][:billing_contact],
+        user_id: set_user.id,
+        authorization_id: set_authorization(billing_account_response[:authorization_uid]).id
       )
       
       billing_account
@@ -18,12 +16,12 @@ module BillingAccount::Add
 
     private
 
-    def exists?(meter_id, bill_id)
-      BillingAccount.exists?(meter_id:, bill_id:)
+    def set_authorization(authorization_uid)
+      @authorization ||= Authorization.find_by(external_uid: authorization_uid)
     end
 
-    def set_user_id(bill_response)
-      Authorization.find_by(external_uid: bill_response[:authorization_uid]).user.id
+    def set_user(authorization_uid)
+      set_authorization(authorization_uid)&.user
     end
   end
 end

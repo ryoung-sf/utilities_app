@@ -1,7 +1,9 @@
 class Authorization < ApplicationRecord
   belongs_to :user
 
-  validates :auth_id, presence: true
+  has_many :billing_accounts
+
+  validates :external_uid, presence: true
   validates :customer_email, presence: true
   validates :is_archived, presence: true, allow_blank: true
   validates :utility, presence: true
@@ -11,7 +13,7 @@ class Authorization < ApplicationRecord
   end
 
   def is_expired?
-    if expired_date.present? && expired_date > Date.now
+    if expired_date.present? && expired_date < Time.zone.now
       true
     else
       false

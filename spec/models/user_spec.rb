@@ -1,7 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "associations" do
+    it "should have associations" do
+      user = create(:user)
+  
+      expect(user).to have_many(:authorizations).dependent(:destroy)
+      expect(user).to have_many(:billing_accounts).dependent(:destroy)
+      expect(user).to have_many(:bills).through(:billing_accounts)
+      expect(user).to have_many(:meters).through(:billing_accounts)
+    end
+  end
 end
 
 # == Schema Information

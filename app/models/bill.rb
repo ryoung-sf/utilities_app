@@ -1,7 +1,6 @@
 class Bill < ApplicationRecord
-  belongs_to :authorization
+  belongs_to :billing_account
   
-  has_one :billing_account
   has_many :meters, through: :billing_account
   has_many :line_items
 
@@ -23,5 +22,6 @@ end
 #  raw_url                :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  authorization_id       :uuid             not null
+#  statement_date         :datetime
+#  billing_account_id     :uuid             not null
 #

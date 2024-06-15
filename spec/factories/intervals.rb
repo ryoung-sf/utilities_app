@@ -3,9 +3,9 @@ FactoryBot.define do
     external_uid { "MyString" }
     start_date { "2024-06-04 11:00:29" }
     end_date { "2024-06-04 11:00:29" }
-    unit { "MyString" }
-    value_time_1000 { "MyString" }
-    type { "" }
+    unit { "kwh" }
+    value_time_1000 { "1820" }
+    type { "net" }
   end
 end
 

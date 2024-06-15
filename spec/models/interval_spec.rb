@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Interval, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "associations" do
+    interval = create(:interval)
+
+    expect(interval).to belong_to(:meter)
+  end
 end
 
 # == Schema Information

@@ -4,7 +4,7 @@ FactoryBot.define do
     start_date { "2024-06-02 08:29:01" }
     end_date { "2024-06-02 08:29:01" }
     total_kwh_times_100 { 1 }
-    total_unit { "MyString" }
+    total_unit { "kWh" }
     total_volume_times_100 { 1 }
     total_cost_cents { 1 }
     billing_account { nil }
@@ -27,5 +27,6 @@ end
 #  raw_url                :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  authorization_id       :uuid             not null
+#  statement_date         :datetime
+#  billing_account_id     :uuid             not null
 #

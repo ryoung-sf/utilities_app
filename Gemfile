@@ -47,6 +47,7 @@ end
 group :development do
   gem "annotate" # Summarize current schema [https://github.com/ctran/annotate_models]
   gem "better_errors"
+  gem "binding_of_caller"
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "letter_opener"
   gem "web-console"
@@ -60,6 +61,7 @@ end
 
 group :test do
   gem "selenium-webdriver"
+  gem "shoulda-matchers", "~> 6.0"
   gem "webdrivers"
 end
 
