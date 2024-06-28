@@ -1,0 +1,15 @@
+{
+  "uid": "12345",
+  "created": "2016-01-01T12:30:24.653422+00:00",
+  "updated": "2016-01-01T12:30:24.653422+00:00",
+  "template_uid": "123423435",
+  "authorization_uid": null,
+  "is_archived": false,
+  "disabled": false,
+  "user_email": "sales@acmesolar.com",
+  "user_uid": "1111",
+  "url": "https://utilityapi.com/authorize/acme_solar?f=097jiosd-8iy5xci23-14fsasaf",
+  "customer_email": "",
+  "utility": "",
+  "scope": {}
+}
