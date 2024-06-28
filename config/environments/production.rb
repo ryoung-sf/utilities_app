@@ -98,11 +98,12 @@ Rails.application.configure do
   # config/application.rb or config/environments/{RAILS_ENV}.rb
   config.active_job.queue_adapter = :good_job
 
-  mailertogo_host     = Rails.application.credentials[:heroku_mailer][:MAILERTOGO_SMTP_HOST]
-  mailertogo_port     = Rails.application.credentials[:heroku_mailer][:MAILERTOGO_SMTP_PORT, 587]
-  mailertogo_user     = Rails.application.credentials[:heroku_mailer][:MAILERTOGO_SMTP_USER]
-  mailertogo_password = Rails.application.credentials[:heroku_mailer][:MAILERTOGO_SMTP_PASSWORD]
-  mailertogo_domain   = Rails.application.credentials[:heroku_mailer][:MAILERTOGO_DOMAIN, "https://protected-springs-45625-ac24967dc1c4.herokuapp.com/"]
+
+  mailertogo_host     = Rails.application.credentials.dig(:heroku_mailer, :MAILERTOGO_SMTP_HOST)
+  mailertogo_port     = Rails.application.credentials.dig(:heroku_mailer, :MAILERTOGO_SMTP_PORT)
+  mailertogo_user     = Rails.application.credentials.dig(:heroku_mailer, :MAILERTOGO_SMTP_USER)
+  mailertogo_password = Rails.application.credentials.dig(:heroku_mailer, :MAILERTOGO_SMTP_PASSWORD)
+  mailertogo_domain   = Rails.application.credentials.dig(:heroku_mailer,:MAILERTOGO_DOMAIN, "https://protected-springs-45625-ac24967dc1c4.herokuapp.com/")
 
   config.action_mailer.smtp_settings = {
     :address              => mailertogo_host,
