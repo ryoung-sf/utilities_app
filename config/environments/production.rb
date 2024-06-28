@@ -99,11 +99,16 @@ Rails.application.configure do
   config.active_job.queue_adapter = :good_job
 
 
-  mailertogo_host     = Rails.application.credentials.dig(:heroku_mailer, :MAILERTOGO_SMTP_HOST)
-  mailertogo_port     = Rails.application.credentials.dig(:heroku_mailer, :MAILERTOGO_SMTP_PORT)
-  mailertogo_user     = Rails.application.credentials.dig(:heroku_mailer, :MAILERTOGO_SMTP_USER)
-  mailertogo_password = Rails.application.credentials.dig(:heroku_mailer, :MAILERTOGO_SMTP_PASSWORD)
-  mailertogo_domain   = Rails.application.credentials.dig(:heroku_mailer,:MAILERTOGO_DOMAIN, "https://protected-springs-45625-ac24967dc1c4.herokuapp.com/")
+  # mailertogo_host     = Rails.application.credentials.dig(:heroku_mailer, :MAILERTOGO_SMTP_HOST)
+  # mailertogo_port     = Rails.application.credentials.dig(:heroku_mailer, :MAILERTOGO_SMTP_PORT)
+  # mailertogo_user     = Rails.application.credentials.dig(:heroku_mailer, :MAILERTOGO_SMTP_USER)
+  # mailertogo_password = Rails.application.credentials.dig(:heroku_mailer, :MAILERTOGO_SMTP_PASSWORD)
+  # mailertogo_domain   = Rails.application.credentials.dig(:heroku_mailer,:MAILERTOGO_DOMAIN, "https://protected-springs-45625-ac24967dc1c4.herokuapp.com/")
+  mailertogo_host     = ENV.fetch("MAILERTOGO_SMTP_HOST")
+  mailertogo_port     = ENV.fetch("MAILERTOGO_SMTP_PORT", 587)
+  mailertogo_user     = ENV.fetch("MAILERTOGO_SMTP_USER")
+  mailertogo_password = ENV.fetch("MAILERTOGO_SMTP_PASSWORD")
+  mailertogo_domain   = ENV.fetch("MAILERTOGO_DOMAIN", "mydomain.com")
 
   config.action_mailer.smtp_settings = {
     :address              => mailertogo_host,
