@@ -1,8 +1,8 @@
 class Meter < ApplicationRecord
   belongs_to :billing_account
   
-  has_many :intervals, dependent: :destroy
-  has_many :bills, through: :billing_account
+  has_many :bills, dependent: :destroy
+  has_many :readings, dependent: :destroy
 end
 
 # == Schema Information

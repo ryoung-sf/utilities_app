@@ -1,10 +1,11 @@
-require 'rails_helper'
-
-RSpec.describe Interval, type: :model do
-  describe "associations" do
-    interval = create(:interval)
-
-    expect(interval).to belong_to(:meter)
+FactoryBot.define do
+  factory :reading do
+    external_uid { "MyString" }
+    start_date { "2024-06-04 11:00:29" }
+    end_date { "2024-06-04 11:00:29" }
+    unit { "kwh" }
+    value_time_1000 { "1820" }
+    type { "net" }
   end
 end
 

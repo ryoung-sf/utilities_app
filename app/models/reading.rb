@@ -1,12 +1,5 @@
-FactoryBot.define do
-  factory :interval do
-    external_uid { "MyString" }
-    start_date { "2024-06-04 11:00:29" }
-    end_date { "2024-06-04 11:00:29" }
-    unit { "kwh" }
-    value_time_1000 { "1820" }
-    type { "net" }
-  end
+class Reading < ApplicationRecord
+  belongs_to :meter
 end
 
 # == Schema Information

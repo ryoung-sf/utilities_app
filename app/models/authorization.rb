@@ -9,11 +9,11 @@ class Authorization < ApplicationRecord
   validates :utility, presence: true
 
   def is_declined?
-    declined_date.present? ? true : false
+    declined_at.present? ? true : false
   end
 
   def is_expired?
-    if expired_date.present? && expired_date < Time.zone.now
+    if expired_at.present? && expired_at < Time.zone.now
       true
     else
       false
@@ -21,7 +21,7 @@ class Authorization < ApplicationRecord
   end
 
   def is_revoked?
-    revoked_date.present? ? true : false
+    revoked_at.present? ? true : false
   end
 end
 

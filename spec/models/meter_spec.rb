@@ -14,9 +14,9 @@ RSpec.describe Meter, type: :model do
       expect(meter).to belong_to(:billing_account)
     end
 
-    it "should have many intervals" do
+    it "should have many readings" do
       meter = create_meter
-      expect(meter).to have_many(:intervals).dependent(:destroy)
+      expect(meter).to have_many(:readings).dependent(:destroy)
     end
 
     it "should have many bills" do

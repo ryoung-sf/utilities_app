@@ -1,7 +1,5 @@
 class Bill < ApplicationRecord
-  belongs_to :billing_account
-  
-  has_many :meters, through: :billing_account
+  belongs_to :meter
   has_many :line_items
 
   monetize :total_cost_cents

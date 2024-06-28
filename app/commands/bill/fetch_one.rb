@@ -2,24 +2,13 @@
 
 module Bill::FetchOne
   class << self
-    def call(params, meter_id: nil)
+    def call(params, meter_id)
       raw_bills = fetch_raw_bills(params)
+      return if raw_bills.blank?
 
       new_bills_from(raw_bills).each do |bill_response|
-        # api_meter_id = bill_response[:meter_id]
-        # meter = Meter.find_by(external_uid: api_meter_id)
-        # meter ||= Meter::FetchOne.call
-        # if meter_id
-
-        
-
-        unless meter_id # clean this up
-          meter_id = Meter.find_by(external_uid: bill_response[:meter_uid])&.id
-          unless meter_id
-            Meter::FetchOne.call({ uids: bill_response[:meter_uid] }, bill_id: bill.id, bill_response:)
-          end
-        end
-        BillingAccount::Add.call(meter_id, bill.id, bill_response) if meter_id
+        new_bill = Bill::Add.call(bill_response, meter_id)
+        LineItem::FetchOne.call(bill_response[:line_items], new_bill.id)
       end
     end
 

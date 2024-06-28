@@ -1,0 +1,75 @@
+{
+  "meters": [
+    {
+      "uid": "meter_12345",
+      "authorization_uid": "auth_12345",
+      "created": "2014-02-17T16:04:34.023534+00:00",
+      "user_email": "sales@acmesolar.com",
+      "user_uid": "3938",
+      "is_archived": false,
+      "is_activated": true,
+      "is_expanded": true,
+      "notes": [
+          {
+              "type": "access_valid",
+              "ts": "2014-06-17T16:06:34.473724+00:00",
+              "msg": "Logged in!"
+          },
+          {
+              "type": "meter_full",
+              "ts": "2014-06-17T16:06:34.473724+00:00",
+              "msg": "Found all meter details."
+          },
+          {
+              "type": "bills_full",
+              "ts": "2014-06-17T16:06:34.473724+00:00",
+              "msg": "Successfully collected bills."
+          },
+          {
+              "type": "intervals_full",
+              "ts": "2014-06-17T16:06:34.473724+00:00",
+              "msg": "Successfully collected intervals."
+          }
+      ],
+      "status": "updated",
+      "status_message": "Data refreshed",
+      "status_ts": "2014-06-17T16:06:34.473724+00:00",
+      "ongoing_monitoring": {
+          "frequency": "off",
+          "prepay": null,
+          "next_prepay": null,
+          "next_refresh": null,
+          "fixed_refresh_day": null
+      },
+      "utility": "PG&E",
+      "bill_count": 25,
+      "bill_coverage": [
+          ["2012-01-05T07:00:00.000000+00:00", "2014-01-10T07:00:00.000000+00:00"]
+      ],
+      "bill_sources": ["pdf"],
+      "interval_count": 71808,
+      "interval_coverage": [
+          ["2012-01-05T07:00:00.000000+00:00", "2014-01-10T07:00:00.000000+00:00"]
+      ],
+      "interval_sources": ["xml"],
+      "exports": {
+          "bills_csv": "https://utilityapi.com/api/v2/files/1238333328334323.csv",
+          "bills_zip": "https://utilityapi.com/api/v2/files/18334323.zip",
+          "latest_pdf": "https://utilityapi.com/api/v2/files/latest_pdf?meter=12314",
+          "intervals_csv": "https://utilityapi.com/api/v2/files/1238333328334323i.csv",
+          "intervals_xml": "https://utilityapi.com/api/v2/files/1238333328334323000.xml"
+      },
+      "blocks": ["base"],
+      "base": {
+          "service_identifier": "1234222222-9",
+          "service_tariff": "A6X",
+          "service_class": "comm-electric",
+          "service_address": "222 Broadway St, Suite 100",
+          "meter_numbers": ["111.00222.333.002"],
+          "billing_contact": "Acme Inc.",
+          "billing_address": "222 Broadway St, Suite 100",
+          "billing_account": "3456222222-9"
+      }
+    }
+  ]
+}

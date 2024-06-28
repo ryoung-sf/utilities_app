@@ -1,5 +1,11 @@
-class Interval < ApplicationRecord
-  belongs_to :meter
+require 'rails_helper'
+
+RSpec.describe Reading, type: :model do
+  describe "associations" do
+    reading = create(:reading)
+
+    expect(reading).to belong_to(:meter)
+  end
 end
 
 # == Schema Information

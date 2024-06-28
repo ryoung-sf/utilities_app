@@ -63,7 +63,6 @@ RSpec.describe Authorization, type: :model do
   describe "is_revoked?" do
     it "should return false when expired_date is nil" do
       authorization = create(:authorization)
-      binding.b
 
       expect(authorization.is_revoked?).to be false
     end

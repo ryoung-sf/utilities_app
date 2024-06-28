@@ -31,7 +31,7 @@ module UtilityApi
         request(http_method: :get, endpoint: "authorizations", body: params)
       end
 
-      def billing_accounts(params)
+      def list_billing_accounts(params)
         request(http_method: :get, endpoint: "accounting/billing-accounts", body: params)
       end
 
@@ -55,6 +55,7 @@ module UtilityApi
             **options
           ) do |config|
             config.request :json
+            # config.options.params_encoder = Faraday::FlatParamsEncoder
             config.request :authorization, :bearer, Rails.application.credentials[:utility_api_token]
             config.response :json, parser_options: { symbolize_names: true }
             # config.response :raise_error
