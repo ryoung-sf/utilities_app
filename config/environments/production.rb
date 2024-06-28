@@ -108,7 +108,7 @@ Rails.application.configure do
   mailertogo_port     = ENV.fetch("MAILERTOGO_SMTP_PORT", 587)
   mailertogo_user     = ENV.fetch("MAILERTOGO_SMTP_USER")
   mailertogo_password = ENV.fetch("MAILERTOGO_SMTP_PASSWORD")
-  mailertogo_domain   = ENV.fetch("MAILERTOGO_DOMAIN", "mydomain.com")
+  mailertogo_domain   = ENV.fetch("MAILERTOGO_DOMAIN", "heroku.com")
 
   config.action_mailer.smtp_settings = {
     :address              => mailertogo_host,
@@ -117,7 +117,7 @@ Rails.application.configure do
     :password             => mailertogo_password,
     :domain               => mailertogo_domain,
     :authentication       => :plain,
-    :enable_starttls_auto => true,
+    :enable_starttls_auto => true
   }
 
   config.action_mailer.default_url_options = { host: "https://protected-springs-45625-ac24967dc1c4.herokuapp.com/"}
