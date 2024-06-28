@@ -19,7 +19,7 @@ RSpec.describe "Create authorization" do
       headers = {
         'Accept'=>'*/*',
         'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'Authorization'=>'bearer 16532b3473754a19ae044a78c3367324',
+        'Authorization'=>"bearer #{Rails.application.credentials[:utility_api_token]}",
         'Content-Type'=>'application/json',
         'User-Agent'=>'Faraday v2.9.0'
       }
@@ -41,7 +41,7 @@ RSpec.describe "Create authorization" do
           headers: {
             'Accept'=>'*/*',
             'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            'Authorization'=>'bearer 16532b3473754a19ae044a78c3367324',
+            'Authorization'=>"bearer #{Rails.application.credentials[:utility_api_token]}",
             'User-Agent'=>'Faraday v2.9.0'
           }
         ).
@@ -57,7 +57,7 @@ RSpec.describe "Create authorization" do
           headers: {
             'Accept'=>'*/*',
             'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            'Authorization'=>'bearer 16532b3473754a19ae044a78c3367324',
+            'Authorization'=>"bearer #{Rails.application.credentials[:utility_api_token]}",
             'User-Agent'=>'Faraday v2.9.0'
           }
         ).
@@ -73,7 +73,7 @@ RSpec.describe "Create authorization" do
           headers: {
             'Accept'=>'*/*',
             'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            'Authorization'=>'bearer 16532b3473754a19ae044a78c3367324',
+            'Authorization'=>"bearer #{Rails.application.credentials[:utility_api_token]}",
             'User-Agent'=>'Faraday v2.9.0'
           }
         ).
@@ -89,7 +89,7 @@ RSpec.describe "Create authorization" do
           headers: {
             'Accept'=>'*/*',
             'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            'Authorization'=>'bearer 16532b3473754a19ae044a78c3367324',
+            'Authorization'=>"bearer #{Rails.application.credentials[:utility_api_token]}",
             'User-Agent'=>'Faraday v2.9.0'
           }
         ).
@@ -105,7 +105,7 @@ RSpec.describe "Create authorization" do
           headers: {
             'Accept'=>'*/*',
             'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            'Authorization'=>'bearer 16532b3473754a19ae044a78c3367324',
+            'Authorization'=>"bearer #{Rails.application.credentials[:utility_api_token]}",
             'User-Agent'=>'Faraday v2.9.0'
           }
         ).
