@@ -94,4 +94,25 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  # config/application.rb or config/environments/{RAILS_ENV}.rb
+  config.active_job.queue_adapter = :good_job
+
+  mailertogo_host     = Rails.application.credentials[:heroku_mailer][:MAILERTOGO_SMTP_HOST]
+  mailertogo_port     = Rails.application.credentials[:heroku_mailer][:MAILERTOGO_SMTP_PORT, 587]
+  mailertogo_user     = Rails.application.credentials[:heroku_mailer][:MAILERTOGO_SMTP_USER]
+  mailertogo_password = Rails.application.credentials[:heroku_mailer][:MAILERTOGO_SMTP_PASSWORD]
+  mailertogo_domain   = Rails.application.credentials[:heroku_mailer][:MAILERTOGO_DOMAIN, "https://protected-springs-45625-ac24967dc1c4.herokuapp.com/"]
+
+  config.action_mailer.smtp_settings = {
+    :address              => mailertogo_host,
+    :port                 => mailertogo_port,
+    :user_name            => mailertogo_user,
+    :password             => mailertogo_password,
+    :domain               => mailertogo_domain,
+    :authentication       => :plain,
+    :enable_starttls_auto => true,
+  }
+
+  config.action_mailer.default_url_options = { host: "https://protected-springs-45625-ac24967dc1c4.herokuapp.com/"}
 end

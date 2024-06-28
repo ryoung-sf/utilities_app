@@ -6,6 +6,7 @@ gem "bootsnap", require: false
 gem "devise"
 gem "faraday"
 gem "font-awesome-sass"
+gem "good_job"
 gem "importmap-rails"
 gem "jbuilder"
 gem "money-rails", "~> 1.12"
@@ -63,5 +64,6 @@ group :test do
   gem "selenium-webdriver"
   gem "shoulda-matchers", "~> 6.0"
   gem "webdrivers"
+  gem "webmock", require: false
 end
 

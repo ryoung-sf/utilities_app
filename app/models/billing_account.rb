@@ -2,11 +2,11 @@ class BillingAccount < ApplicationRecord
   belongs_to :user
   belongs_to :authorization
 
-  has_many :bills, dependent: :destroy
   has_many :meters, dependent: :destroy
+  has_many :bills, through: :meters
 
-  validates :external_uid, presence: true
-  validates :utility_account_id, presence: true
+  # validates :external_uid, presence: true
+  # validates :utility_account_id, presence: true
 end
 
 # == Schema Information

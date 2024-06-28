@@ -4,7 +4,6 @@ module RequestForm::Create
   class << self
     def call(params, user_id)
       new_form = create_new_form(params)
-      binding.b
       new_form[:url]
     end
 
