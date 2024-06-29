@@ -56,7 +56,7 @@ module UtilityApi
           ) do |config|
             config.request :json
             # config.options.params_encoder = Faraday::FlatParamsEncoder
-            config.request :authorization, :bearer, Rails.application.credentials.dig(:utility_api_token)
+            config.request :authorization, 'Bearer', Rails.application.credentials.dig(:utility_api_token)
             config.response :json, parser_options: { symbolize_names: true }
             # config.response :raise_error
             config.response(:logger, Rails.logger, headers: true, bodies: true, log_level: :debug) do |logger|
