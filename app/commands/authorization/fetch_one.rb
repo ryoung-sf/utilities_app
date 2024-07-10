@@ -6,10 +6,13 @@ module Authorization::FetchOne
       raw_auths = fetch_raw_auths(params)
 
       new_auths_from(raw_auths, user_id).each do |auth|
-        # SendApiRequestJob.set(good_job_labels: ["utility_request"])
-        #   .perform_later(BillingAccount::FetchOne.call({authorization_uid: auth[:uid]}, user_id))
-        Authorization::Add.call(auth, user_id)
-        BillingAccount::FetchOne.call({authorizations: auth[:uid]}, user_id)
+        new_auth = Authorization::Add.call(auth, user_id)
+        meters = auth[:meters][:meters]
+        if meters
+          Meter::FindNewMeters.call(meters).each do |meter|
+            Meter::Add.call(meter, new_auth.id, user_id)
+          end
+        end
       end
     end
 

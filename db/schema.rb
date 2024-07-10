@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_28_154024) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_01_151310) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -178,8 +178,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_28_154024) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "billing_account_id", null: false
-    t.index ["billing_account_id"], name: "index_meters_on_billing_account_id"
+    t.uuid "user_id", null: false
+    t.uuid "authorization_id", null: false
+    t.index ["authorization_id"], name: "index_meters_on_authorization_id"
+    t.index ["user_id"], name: "index_meters_on_user_id"
   end
 
   create_table "readings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -225,6 +227,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_28_154024) do
   add_foreign_key "billing_accounts", "users"
   add_foreign_key "bills", "meters"
   add_foreign_key "line_items", "bills"
-  add_foreign_key "meters", "billing_accounts"
+  add_foreign_key "meters", "authorizations"
+  add_foreign_key "meters", "users"
   add_foreign_key "readings", "meters"
 end

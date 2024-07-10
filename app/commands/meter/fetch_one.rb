@@ -13,8 +13,8 @@ module Meter::FetchOne
         #   .perform_later(Reading::FetchOne.call( meter_uids: meter_response[:uid]))
         
         meter = Meter::Add.call(meter_response, billing_account_id)
-        Bill::FetchOne.call( {meters: meter_response[:uid]}, meter.id)
-        Reading::FetchOne.call( {meters: meter_response[:uid]}, meter.id)
+        # Bill::FetchOne.call( {meters: meter_response[:uid]}, meter.id)
+        # Reading::FetchOne.call( {meters: meter_response[:uid]}, meter.id)
       end
     end
 
