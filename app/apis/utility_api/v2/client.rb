@@ -19,6 +19,10 @@ module UtilityApi
         request(http_method: :get, endpoint: "meters", body: params)
       end
 
+      def start_historical_collection(params)
+        request(http_method: :post, endpoint: "meters/historical-collection", body: params)
+      end
+
       def list_bills(params)
         request(http_method: :get, endpoint: "bills", body: params )
       end

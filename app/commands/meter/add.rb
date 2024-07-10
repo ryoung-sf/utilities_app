@@ -2,7 +2,7 @@
 
 module Meter::Add
   class << self
-    def call(meter, billing_account_id)
+    def call(meter, auth_id, user_id)
       meter = Meter.create(
         external_uid: meter[:uid],
         service_class: meter[:base][:service_class],
@@ -12,7 +12,8 @@ module Meter::Add
         utility_meter_id: meter[:base][:meter_numbers][0],
         status_at: meter[:status_ts],
         status: meter[:status_message],
-        billing_account_id:,
+        authorization_id: auth_id,
+        user_id:
       )
 
       meter

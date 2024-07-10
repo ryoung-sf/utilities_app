@@ -1,0 +1,107 @@
+{
+  "authorizations": [
+    {
+      "uid": "auth_12345",
+      "created": "2016-01-01T12:30:24.653422+00:00",
+      "customer_signature": {
+        "type": "text",
+        "ts": "2016-01-01T12:30:24.653422+00:00",
+        "full_name": "Philip J. Fry"
+      },
+      "customer_email": "pfry@planetexpress.com",
+      "declined": "null",
+      "is_declined": false,
+      "expires": "2019-01-01T12:30:24.653422+00:00",
+      "is_expired": false,
+      "exports": {
+          "bills_combined_csv": "https://utilityapi.com/api/v2/files/meters_bills_csv?meters=321,567",
+          "meters_csv": "https://utilityapi.com/api/v2/files/meters_csv?accounts=12345"
+      },
+      "template_uid": "397hcu30",
+      "form_uid": "87251",
+      "is_archived": false,
+      "is_test": false,
+      "meters": {
+        "meters": [
+          {
+            "authorization_uid": "auth_12345",
+            "base": {
+              "billing_account": "3456222222-9",
+              "billing_address": "222 Broadway St, Suite 100",
+              "billing_contact": "Acme Inc.",
+              "meter_numbers": ["111.00222.333.002"],
+              "service_class": "electric",
+              "service_identifier": "1234222222-9",
+              "service_tariff": "A6X"
+            },
+            "bill_count": 0,
+            "bill_coverage": [],
+            "bill_source": [],
+            "blocks": ["base"],
+            "created": "2024-06-17T00:22:26.155467+00:00",
+            "exports": {},
+            "exports_list": [],
+            "interval_count": 0,
+            "interval_coverage": [],
+            "interval_sources": {},
+            "is_activated": false,
+            "is_archived": true,
+            "is_expanded": true,
+            "notes": [
+              {
+                "last_uptdated": "2024-06-17T00:22:26.154862+00:00",
+                "msg": "Data appears to be available through 2024-01-16",
+                "ts": "2024-06-28T21:56:26.204918+00:00",
+                "type": "latest_known_bill"
+              },
+              {
+                "msg": "All meter details were successfully collected",
+                "ts": "2024-06-17T00:22:26.155467+00:00",
+                "type": "meters_full"
+              }
+            ],
+            "ongoing_montioring": {
+              "fixed_refresh_day": "nil",
+              "frequency": "off",
+              "next_prepay": "nil",
+              "next_refresh": "nil",
+              "prepay": "nil"
+            },
+            "status": "updated",
+            "status_message": "Service exists, but no logs yet.",
+            "status_ts": "2024-06-17T00:22:26.1555467+00:00",
+            "uid": "meter_12345",
+            "user_email": "sales@acmesolar.com",
+            "user_uid": "3938",
+            "utility": "DEMO"
+          }
+        ],
+        "next": "nil"
+      },
+      "scope": {},
+      "nickname": "null",
+      "notes": [
+          {
+              "type": "access_valid",
+              "msg": "Succesfully registered with account number.",
+              "ts": "2019-01-01T12:32:42.347321+00:00"
+          },
+          {
+              "type": "meters_full",
+              "msg": "Found all meters available.",
+              "ts": "2019-01-01T12:35:42.347321+00:00"
+          }
+      ],
+      "revoked": "null",
+      "is_revoked": false,
+      "status": "updated",
+      "status_message": "Meters found!",
+      "status_ts": "2016-01-01T12:35:41.823324+00:00",
+      "user_uid": "1337",
+      "user_email": "sales@acmesolar.com",
+      "user_status": "active",
+      "utility": "PG&E"
+    }
+  ],
+  "next": "null"
+}
