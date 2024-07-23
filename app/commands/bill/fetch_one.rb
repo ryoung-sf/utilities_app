@@ -3,6 +3,7 @@
 module Bill::FetchOne
   class << self
     def call(params, meter_id)
+      latest_bill(params, meter_id)
       raw_bills = fetch_raw_bills(params)
       return if raw_bills.blank?
 
@@ -25,6 +26,14 @@ module Bill::FetchOne
 
     def connection
       connection ||= UtilityApi::V2::Client.new
+    end
+
+    def latest_bill(params, meter_id)
+      bill = Bill.find_by(meter_id:,)&.order('end_at DESC')&.first
+      return params unless bill
+
+      params[:start] = bill.end_at
+      params
     end
   end
 end

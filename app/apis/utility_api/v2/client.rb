@@ -15,22 +15,27 @@ module UtilityApi
         request(http_method: :get, endpoint: "meters/#{meter_id}")
       end
 
+      # params: uids, authorizations, users, utility, is_activated, is_archived, is_monitored, after, expand_meter_blocks
       def list_meters(params)
         request(http_method: :get, endpoint: "meters", body: params)
       end
 
+      # params: meters: [meter_uid]
       def start_historical_collection(params)
         request(http_method: :post, endpoint: "meters/historical-collection", body: params)
       end
 
+      # params: authorizations, meters, start, end, limit, order, after
       def list_bills(params)
         request(http_method: :get, endpoint: "bills", body: params )
       end
 
+      # params: authorizations, meters, start, end, limit, order, after
       def list_intervals(params)
         request(http_method: :get, endpoint: "intervals", body: params)
       end
 
+      # params: uids, forms, templates, users, referrals, is_archived, is_declinded, is_test, is_revoked is_expired, utility, after, include, expand_meter_blocks, limit
       def list_authorizations(params)
         request(http_method: :get, endpoint: "authorizations", body: params)
       end
@@ -38,9 +43,21 @@ module UtilityApi
       def list_billing_accounts(params)
         request(http_method: :get, endpoint: "accounting/billing-accounts", body: params)
       end
-
+      
+      # params: template_uid, authorization_uid customer_email, utility, scope
       def create_form(params)
         request(http_method: :post, endpoint: "forms", body: params)
+      end
+      
+      # Webhooks
+      # params: event_uid
+      def get_event(event_uid)
+        request(http_method: :get, endpoint: "events/#{event_uid}")
+      end
+
+      # params: is_delivered, after
+      def list_events(params)
+        request(http_method: :get, endpoint: "events", body: params)
       end
 
       private
@@ -59,7 +76,7 @@ module UtilityApi
             **options
           ) do |config|
             config.request :json
-            # config.options.params_encoder = Faraday::FlatParamsEncoder
+            config.options.params_encoder = Faraday::FlatParamsEncoder
             config.request :authorization, 'Bearer', Rails.application.credentials.dig(:utility_api_token)
             config.response :json, parser_options: { symbolize_names: true }
             # config.response :raise_error

@@ -12,6 +12,7 @@ class AuthorizationsController < ApplicationController
     # SendApiRequestJob.set(good_job_labels: ["utility_request"])
     #   .perform_later(Authorization::FetchOne, request_params, current_user.id)
     Authorization::FetchOne.call(request_params, current_user.id)
+    redirect_to meters_path
   end
 
   private
