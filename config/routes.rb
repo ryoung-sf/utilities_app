@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
-  get 'meters/index'
+  resources :meters, only: %i[index]
   devise_for :users
   
   authenticated :user do
-    root to: "billing_accounts#index", as: :authenticated_user_root
+    root to: "meters#index", as: :authenticated_user_root
   end
   
   # resources :billing_accounts, only: %i[index]
   resources :request_forms, only: %i[new create url]
   get "request_forms/url", to: "request_forms#url", as: :url_request_form
   get 'authorizations/receive', to: "authorizations#receive"
+
+  namespace :webhooks do
+    resource :utility_api, controller: :utility_api, only: [:create]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

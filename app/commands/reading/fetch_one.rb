@@ -3,6 +3,7 @@
 module Reading::FetchOne
   class << self
     def call(params, meter_id)
+      latest_interval(params, meter_id)
       raw_intervals = fetch_raw_readings(params)
       return if raw_intervals.blank?
 
@@ -27,6 +28,14 @@ module Reading::FetchOne
 
     def connection
       connection ||= UtilityApi::V2::Client.new
+    end
+
+    def latest_interval(params, meter_id)
+      reading = Reading.find_by(meter_id:)&.order('end_at DESC')&.first
+      return params unless reading
+
+      params[:start] = reading.end_at
+      params
     end
   end
 end

@@ -7,11 +7,10 @@ module Authorization::FetchOne
 
       new_auths_from(raw_auths, user_id).each do |auth|
         new_auth = Authorization::Add.call(auth, user_id)
-        meters = auth[:meters][:meters]
-        if meters
-          Meter::FindNewMeters.call(meters).each do |meter|
-            Meter::Add.call(meter, new_auth.id, user_id)
-          end
+        raw_meters = auth[:meters][:meters]
+        raw_meters&.each do |meter|
+          Meter::StartHistoricalCollection.call(meter, new_auth.id)
+          # Meter::FetchOne.call({meters: meter[:uid] }, new_auth.id)
         end
       end
     end

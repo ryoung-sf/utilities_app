@@ -1,5 +1,6 @@
 class Meter < ApplicationRecord
-  belongs_to :billing_account
+  belongs_to :authorization
+  belongs_to :user
   
   has_many :bills, dependent: :destroy
   has_many :readings, dependent: :destroy
