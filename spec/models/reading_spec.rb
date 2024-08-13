@@ -10,16 +10,15 @@ end
 
 # == Schema Information
 #
-# Table name: intervals
+# Table name: readings
 #
-#  id               :uuid             not null, primary key
-#  external_uid     :string           not null
-#  start_date       :datetime         not null
-#  end_date         :datetime         not null
-#  unit             :string           not null
-#  value_times_1000 :integer          default(0), not null
-#  volume_type      :string           not null
-#  meter_id         :uuid             not null
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id          :uuid             not null, primary key
+#  start_at    :datetime         not null
+#  end_at      :datetime         not null
+#  unit        :string           not null
+#  volume_type :string           not null
+#  meter_id    :uuid             not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  value       :decimal(10, 6)   default(0.0)
 #

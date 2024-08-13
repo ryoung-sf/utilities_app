@@ -7,13 +7,13 @@ module BillingAccount::FetchOne
 
       if raw_billing_accounts.blank?
         new_billing_account = BillingAccount::Add.call(temp_billing_account_response(params), user_id)
-        Meter::FetchOne.call({authorizations: params[:authorizations]}, new_billing_account.id)
+        Meter::FetchOne.call({authorizations: params[:authorizations]})
       else
         new_billing_accounts_from(raw_billing_accounts).each do |billing_account_response|
           # SendApiRequestJob.set(good_job_labels: ["utility_request"])
           #   .perform_later(Meter::FetchOne.call({uid: billing_account_response[:meter_uids][0]}))
           new_billing_account = BillingAccount::Add.call(billing_account_response, user_id)
-          Meter::FetchOne.call({uid: billing_account_response[:meter_uids][0]}, new_billing_account.id)
+          Meter::FetchOne.call({uid: billing_account_response[:meter_uids][0]})
         end
       end
     end

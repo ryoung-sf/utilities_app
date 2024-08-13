@@ -3,10 +3,12 @@ source "https://rubygems.org"
 ruby "3.3.0"
 
 gem "bootsnap", require: false
+gem "chartkick"
 gem "devise"
 gem "faraday"
 gem "font-awesome-sass"
 gem "good_job"
+gem "groupdate"
 gem "importmap-rails"
 gem "jbuilder"
 gem "money-rails", "~> 1.12"

@@ -2,16 +2,12 @@
 
 module Authorization::FetchOne
   class << self
-    def call(params, user_id)
+    def call(params)
       raw_auths = fetch_raw_auths(params)
 
-      new_auths_from(raw_auths, user_id).each do |auth|
-        new_auth = Authorization::Add.call(auth, user_id)
-        raw_meters = auth[:meters][:meters]
-        raw_meters&.each do |meter|
-          Meter::StartHistoricalCollection.call(meter, new_auth.id)
-          # Meter::FetchOne.call({meters: meter[:uid] }, new_auth.id)
-        end
+      new_auths_from(raw_auths).each do |auth|
+        user_id = User.find_by(email: auth[:customer_email]).id
+        Authorization::Add.call(auth, user_id)
       end
     end
 
@@ -22,8 +18,8 @@ module Authorization::FetchOne
       raw_auths[:body][:authorizations]
     end
 
-    def new_auths_from(raw_auths, user_id)
-      Authorization::FindNewAuths.call(raw_auths, user_id)
+    def new_auths_from(raw_auths)
+      Authorization::FindNewAuths.call(raw_auths)
     end
 
     def connection

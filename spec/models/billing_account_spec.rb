@@ -32,7 +32,7 @@ end
 # Table name: billing_accounts
 #
 #  id                 :uuid             not null, primary key
-#  utility_account_id :string           not null
+#  utility_account_id :string
 #  contact_name       :string
 #  user_id            :uuid             not null
 #  created_at         :datetime         not null

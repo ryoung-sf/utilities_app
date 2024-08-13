@@ -17,54 +17,145 @@
   </div>
 </header>
 
-<div class="flex mx-auto max-w-4xl min-h-full flex-col bg-white">
-  <div class="mt-4 px-2">
-    <dl class="mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 lg:px-2 xl:px-2 lg:space-x-2 lg:space-y-2">
-      <div class="flex items-baseline flex-wrap justify-between gap-y-2 gap-x-4 rounded-lg px-4 py-4 sm:px-6 border-t-2 border-b-2 xl:px-8 border-teal-400 bg-white">
-        <dt class="text-sm font-medium text-xl leading-6 text-gray-900">First Name Last Name</dt>
-        <dd class="text-sm w-full font-medium leading-6 text-gray-900">Street</dd>
-        <dd class="text-sm w-full font-medium leading-6 text-gray-900">City, State Zip</dd>
-        <dd class="text-xs font-medium leading-6 text-gray-900">Billing Account No</dd>
+<div class="mx-auto mt-4 flex">
+  <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:px-2">
+    <div class="flex flex-col space-y-4">
+      <div>
+        <p class="">
+          Utility Summary
+        </p>
+        <p class="text-sm">
+          Account use summary
+        </p>
+      </div>  
+      <div class="flex space-x-2 items-center">
+        <p class="text-xl font-bold"><span class="text-sm">$</span>210.00</p>
+        <p class="text-sm bg-green-100 text-green-700 font-semibold px-2 mx-auto rounded-md align-text-bottom">+2.3%</p>  
       </div>
-      <div class="flex items-baseline flex-wrap justify-between gap-y-2 gap-x-4 rounded-lg px-4 py-4 sm:px-6 border-t-0 xl:px-8 bg-teal-500">
-        <dt class="text-sm font-medium leading-6 text-white">Recent Bill (PDF)</dt>
-        <dd class="text-xs font-medium text-rose-800">+54.02%</dd>
-        <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-white">
-          $20.99
-        </dd>
-        <dd class="text-xs font-medium text-white">Jan 10, 2022 - Feb 9, 2022</dd>
-      </div>
-      <div class="flex items-baseline flex-wrap justify-between gap-y-2 gap-x-4 rounded-lg px-4 py-4 sm:px-6 lg:border-t-0 xl:px-8 bg-teal-700">
-        <dt class="text-sm font-medium leading-6 text-white">kWh Usage</dt>
-        <dd class="text-xs font-medium text-rose-400">+54.02%</dd>
-        <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-white">100 kWh</dd>
-        <dd class="text-xs font-medium text-white">Jan 10, 2022 - Feb 9, 2022</dd>
-      </div>
-    </dl>
-  </div>
-
-  <div class="mt-4">
-    <div class="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:px-2 xl:px-2 space-x-2">
-      <div class="col-span-2 flex items-baseline flex-wrap justify-between gap-y-2 gap-x-4 rounded-lg px-4 py-4 sm:px-6 border-t-2 border-b-2 xl:px-8 border-teal-400 bg-white">
-       
-      </div>
-      <div class="flex items-baseline flex-wrap justify-between gap-y-2 gap-x-4 rounded-lg px-4 py-4 sm:px-6 lg:border-t-0 xl:px-8 bg-teal-700">
-        <dt class="w-full text-sm font-medium leading-6 text-white">kWh Usage By Tiers</dt>
-        <dd class="flex-none font-medium leading-6 tracking-tight text-white">1,872</dd>
-        <dd class="text-xs font-medium text-white">Jan 10, 2024 - Feb 09, 2024</dd>
-      </div>
+      <p>
+        January Bill
+      </p>
+    </div>
+    <div>
+      
     </div>
   </div>
+  <div>
+  </div>
+</div>
 
+<div class="mx-auto mt-4">
+  <div class="mx-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:px-2 space-y-6 lg:space-y-0 lg:gap-x-4">
+    <div class="flex flex-col space-y-6 p-2 aspect-square bg-green-100 rounded-lg">
+      <div class="flex">
+        <p class="bg-green-200 rounded-full p-2">
+          <%= image_tag("lightning32px.png") %>
+        </p>
+      </div>
+      <div>
+        <p class="text-lg font-semibold">
+          <%= bills.first.total_kwh %> KWH
+        </p>
+        <p class="text-sm font-extralight">
+          <%= "May 1, 2024 - May 30, 2024" %>
+        </p>
+      </div>
+      <div class="">
+        <%= line_chart readings.total_kwh_usage_per_day,
+          # width: "100px",
+          height: "200px",
+          min: readings.min_total_kwh_usage_per_day / 2,
+          max: readings.max_total_kwh_usage_per_day,
+          dataset: {
+            # fill: "start",
+            backgroundColor: "transparent",
+          },
+          library: { 
+            scales: { 
+              y: { 
+                type: "logarithmic",
+                ticks: { 
+                  display: false,
+                },
+                # min: @min_avg_usage_feb_2015,
+                grid: {
+                  display: false
+                }
+              },
+              x: {
+                ticks: {
+                  display: false
+                }
+              }
+            },
+          },
+          colors: ["#15803D"]
+        %>
+      </div>
+    </div>
+    <div class="flex flex-col space-y-6 border-2 border-gray-200 p-2 aspect-square bg-white rounded-lg">
+      <div class="flex">
+        <p class="bg-green-200 rounded-full p-2">
+          <%= image_tag("lightning32px.png") %>
+        </p>
+      </div>
+      <div class="flex flex-col">
+        <p class="text-lg font-semibold">
+          <%= bills.first.total_kwh %> KWH
+        </p>
+        <p class="text-sm font-extralight">
+          Peak Consumption Per Day - May 2024
+        </p>
+      </div>
+      <div>
+        <%= area_chart readings.peak_kwh_usage_per_day,
+          # width: "200px",
+          height: "100px",
+          min: readings.min_peak_kwh_usage_per_day,
+          # max: @max_hourly_usage_per_month,
+          dataset: {
+            fill: "start"
+          },
+          library: { 
+            scales: { 
+              y: { 
+                ticks: { 
+                  display: false
+                },
+                grid: {
+                  display: false
+                },
+              },
+              x: {
+                ticks: {
+                  display: false
+                }
+              }
+            }
+          },
+          colors: ["#15803D", "#BBF7D0"]
+        %>
+      </div>
+    </div>
+    <div>
+      <%= column_chart bills.group_by_month(:statement_at).sum(:total_kwh) %>
+    </div>
+  </div>
+</div>
+
+<div class="flex mx-auto max-w-4xl min-h-full flex-col bg-white">
+  
   <div class="mx-auto flex w-full items-start gap-x-8 px-4 py-10 sm:px-6 lg:px-8">
     <aside class="sticky top-8 hidden w-44 shrink-0 lg:block">
       <!-- Left column area -->
-      Side 1
+      Side
+      <p>
+        <%= user.email %>
+      </p>
     </aside>
 
     <main class="flex-1">
       <!-- Main area -->
-      <#% @meters.first.readings.each do |reading|
       Meter Readings
     </main>
 

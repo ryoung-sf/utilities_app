@@ -2,11 +2,11 @@
 
 module Authorization::FindNewAuths
   class << self
-    def call(raw_auths, user_id)
+    def call(raw_auths)
       auths = []
 
       raw_auths.each do |auth|
-        next if Authorization.exists?(external_uid: auth[:uid], user_id:)
+        next if Authorization.exists?(external_uid: auth[:uid])
 
         auths << auth
       end
