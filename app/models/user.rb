@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   has_many :authorizations, dependent: :destroy
-  has_many :billing_accounts, dependent: :destroy
-  has_many :bills, through: :billing_accounts
-  has_many :meters, through: :billing_accounts
+  has_many :meters, dependent: :destroy
   # Include default devise modules. Others available are:
   #   and :omniauthable
   devise :confirmable, 

@@ -11,7 +11,9 @@ module Meter::Add
         activated_at: meter[:created],
         utility_meter_id: meter[:base][:meter_numbers][0],
         status_at: meter[:status_ts],
-        status: meter[:status_message],
+        status: meter[:status],
+        status_message: meter[:status_message],
+        notes: meter[:notes],
         authorization_id: auth_id,
         user_id:
       )

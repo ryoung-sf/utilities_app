@@ -2,27 +2,15 @@
 
 module Meter::FetchOne
   class << self
-    def call(params, auth_id)
+    def call(params)
       raw_meters = fetch_meters_response(params)
       
       return if raw_meters.blank?
 
+      # user_id = Authorization.find(auth_id).user.id
       new_meters_from(raw_meters).each do |meter_response|
-        # SendApiRequestJob.set(good_job_labels: ["utility_requests"])
-        #   .perform_later(Bill::FetchOne.call({ meter_uids: meter_response[:uid]}))
-        # SendApiRequestJob.set(good_job_labels: ["utility_requests"])
-        #   .perform_later(Reading::FetchOne.call( meter_uids: meter_response[:uid]))
-        user = Authorization.find(auth_id).user
-        new_meter = Meter::Add.call(meter_response, auth_id, user.id)
-        if updated?(meter_response)
-          if has_bills?(meter_response)
-            Bill::FetchOne.call( {meters: meter_response[:uid]}, new_meter.id)
-          end
-  
-          if has_intervals?(meter_response)
-            Reading::FetchOne.call( {meters: meter_response[:uid]}, new_meter.id)
-          end
-        end
+        auth = Authorization.find_by(external_uid: meter_response[:authorization_uid])
+        Meter::Add.call(meter_response, auth.id, auth.user_id)
       end
     end
 

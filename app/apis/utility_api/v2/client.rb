@@ -22,6 +22,7 @@ module UtilityApi
 
       # params: meters: [meter_uid]
       def start_historical_collection(params)
+        params[:meters] = [params[:meters]]
         request(http_method: :post, endpoint: "meters/historical-collection", body: params)
       end
 

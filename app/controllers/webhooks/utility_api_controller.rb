@@ -4,10 +4,10 @@ class Webhooks::UtilityApiController < Webhooks::BaseController
   # curl -X POST http://localhost:3000/webhooks/utility_api -H 'Content-Type: application/json' -d '{"test": "testing"}'
 
   def create
-    record = InboundWebhook.new(body: payload)
+    record = InboundWebhook.create(body: payload)
 
     # Queue database record for processing
-    # Webhooks::UtilityApiJob.perform_later(record, current_user.id)
+    Webhooks::UtilityApiJob.perform_later(record)
 
     head 200
   end

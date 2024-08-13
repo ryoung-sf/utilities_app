@@ -2,13 +2,14 @@
 
 module Bill::FetchOne
   class << self
-    def call(params, meter_id)
-      latest_bill(params, meter_id)
+    def call(params)
+      meter = Meter.find_by(external_uid: params[:meters])
+      params = latest_bill(params, meter.id)
       raw_bills = fetch_raw_bills(params)
       return if raw_bills.blank?
 
       new_bills_from(raw_bills).each do |bill_response|
-        new_bill = Bill::Add.call(bill_response, meter_id)
+        new_bill = Bill::Add.call(bill_response, meter.id)
         LineItem::FetchOne.call(bill_response[:line_items], new_bill.id)
       end
     end
@@ -29,10 +30,10 @@ module Bill::FetchOne
     end
 
     def latest_bill(params, meter_id)
-      bill = Bill.find_by(meter_id:,)&.order('end_at DESC')&.first
+      bill = Bill.where(meter_id:,)&.order('end_at DESC')&.first if Bill.where(meter_id:).any?
       return params unless bill
 
-      params[:start] = bill.end_at
+      params[:start] = bill.end_at.strftime("%Y-%m-%d")
       params
     end
   end
