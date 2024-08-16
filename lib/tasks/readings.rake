@@ -6,6 +6,7 @@ namespace :readings do
     
     Meter.all.each do |meter|
       retrieve_n_bills(meter).each do |bill|
+        next if Reading.exists?(start_at: bill.start_at.., end_at: ..bill.end_at, meter_id: meter)
         reading_start_at = bill.start_at
 
         readings_array = empty_readings_array(bill)
@@ -19,6 +20,7 @@ namespace :readings do
             value: reading
           )
           reading_start_at = reading_start_at + 3600
+          p "Reading created for meter: #{meter.id}"
         end
       end
     end
@@ -48,7 +50,7 @@ namespace :readings do
     Array.new(num_of_readings, 0)
   end
 
-  def retrieve_n_bills(meter, n = 3)
+  def retrieve_n_bills(meter, n = nil)
     meter.bills.order(statement_at: :desc).limit(n)
   end
 end
