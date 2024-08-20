@@ -11,4 +11,9 @@ class MetersController < ApplicationController
       render(locals: { bills: @bills, readings: @readings, user: current_user })
     end
   end
+
+  def show
+    @meter = Meter.find(params[:id])
+    authorize(@meter)
+  end
 end

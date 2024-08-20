@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   devise_for :users
   
   authenticated :user do
-    root to: "meters#index", as: :authenticated_user_root
+    root to: "meters#index", as: :authenticated_user_root do
+      resources :bills, only: %i[index]
+      resources :readings, only: %i[index]
+    end
   end
   
   # resources :billing_accounts, only: %i[index]
@@ -25,4 +28,6 @@ Rails.application.routes.draw do
   # get 'static_pages/index'
   # Defines the root path route ("/")
   root "static_pages#index"
+  get "/about", to: "static_pages#about"
+  get "/contact", to: "static_pages#contact"
 end

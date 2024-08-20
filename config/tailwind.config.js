@@ -12,11 +12,17 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        "limegreen": "#76B847",
+        "kellygreen": "#B1D8B7",
+        "seafoamgreen": "#2F5233",
+        "spearmint": "#94C973",
+      },
     },
   },
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
-  ]
+  ],
 }
