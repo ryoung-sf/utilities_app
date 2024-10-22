@@ -6,9 +6,7 @@ RSpec.describe User, type: :model do
       user = create(:user)
   
       expect(user).to have_many(:authorizations).dependent(:destroy)
-      expect(user).to have_many(:billing_accounts).dependent(:destroy)
-      expect(user).to have_many(:bills).through(:billing_accounts)
-      expect(user).to have_many(:meters).through(:billing_accounts)
+      expect(user).to have_many(:meters)
     end
   end
 end

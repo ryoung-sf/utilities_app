@@ -12,6 +12,39 @@ class Bill < ApplicationRecord
   scope :statement_period_between, -> (start_date = nil, end_date = nil) {
     where(start_at: start_date.., end_at: ..end_date) if start_date.present? && end_date.present?
   }
+
+  scope :prior_6_months_statements, -> (end_date = nil) {
+    where(statement_at: (5.month.ago(end_date))..(end_date)) if end_date.present?
+  }
+
+  scope :prior_year_statements, -> (end_date = nil) {
+    where(statement_at: (12.month.ago(end_date))..(end_date)) if end_date.present?
+  }
+
+  class << self
+    def bills_by_month_year
+      # group_by_month(:statement_at, format: "%b %y").sum(:total_cost_cents)
+      group_by_month(:statement_at, format: "%b %y").sum(:total_cost_cents).transform_values { |v| v/100.0 }
+    end
+
+    def change_in_total_kwh
+      bills_by_month_year.values.each_cons(2).map { |a, b| b - a }
+    end
+  end
+
+  def change_in_total_cost
+    prior_bill = Bill.where("statement_at < ?", statement_at).order(statement_at: :desc).first
+    return 0 unless prior_bill
+    
+    (((total_cost - prior_bill.total_cost) / prior_bill.total_cost) * 100).round(2)
+  end
+
+  def change_in_total_kwh
+    prior_bill = Bill.where("statement_at < ?", statement_at).order(statement_at: :desc).first
+    return 0 unless prior_bill
+    
+    (((total_kwh - prior_bill.total_kwh) / prior_bill.total_kwh) * 100).round(2)
+  end
 end
 
 # == Schema Information

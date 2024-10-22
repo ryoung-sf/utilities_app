@@ -1,13 +1,13 @@
 FactoryBot.define do
   factory :line_item do
-    cost_cents { 1 }
-    end_date { "2024-06-03 21:44:08" }
-    start_date { "2024-06-03 21:44:08" }
-    name { "MyString" }
-    rate_times_10000 { 1 }
-    unit { "MyString" }
-    volume_times_100 { 1 }
-    bill { nil }
+    cost_cents { 52.88 }
+    end_at { "2024-06-03 21:44:08" }
+    start_at { "2024-06-03 21:44:08" }
+    name { "Tier 1 Usage" }
+    unit { "kwh" }
+    bill { create(:bill) }
+    rate { 0.1617 }
+    volume { 327.0 }
   end
 end
 

@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Reading, type: :model do
   describe "associations" do
-    reading = create(:reading)
+    it "should belong to a meter" do
+      reading = create(:reading)
 
-    expect(reading).to belong_to(:meter)
+      expect(reading).to belong_to(:meter)
+    end
   end
 end
 

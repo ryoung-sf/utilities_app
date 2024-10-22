@@ -1,13 +1,17 @@
 FactoryBot.define do
   factory :meter do
-    external_uid { "45678" }
+    external_uid { "meter_12345" }
     service_class { "Comm-electric" }
     service_id { "1234222222-9" }
     service_tariff { "MyString" }
-    created_date { Time.zone.now }
+    activated_at { Time.zone.now }
     utility_meter_id { "111.00222.333.002" }
-    status_date { Time.zone.now }
+    status_at { Time.zone.now }
     status { "updated" }
+    user { default_user }
+    authorization { default_authorization }
+    status_message { "Meter found!" }
+    notes { "{}" }
   end
 end
 

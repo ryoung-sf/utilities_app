@@ -9,8 +9,13 @@ module FactoryCache
     @user
   end
 
+  def self.authorization
+    @authorization ||= FactoryBot.create(:authorization)
+  end
+
   def self.reset
     @user = nil
+    @authorization = nil
   end
 end
 
@@ -26,5 +31,9 @@ end
 module FactoryBot::Syntax::Methods
   def default_user
     FactoryCache.user
+  end
+
+  def default_authorization
+    FactoryCache.authorization
   end
 end

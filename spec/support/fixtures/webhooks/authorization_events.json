@@ -1,0 +1,23 @@
+{
+    "events": [
+        {
+            "uid": "0b346106", 
+            "type": "authorization_created", 
+            "ts": "2019-01-01T12:32:42.347321+00:00", 
+            "delivery_method": "webhook", 
+            "delivery_target": "https://yourserver.com/webhook-receiver", 
+            "is_delivered": false, 
+            "authorization_uid": "auth_12345"
+        }, 
+        {
+            "uid": "f18bb97d", 
+            "type": "authorization_update_started", 
+            "ts": "2019-01-01T12:32:42.347321+00:00", 
+            "delivery_method": "webhook", 
+            "delivery_target": "https://yourserver.com/webhook-receiver", 
+            "is_delivered": false, 
+            "authorization_uid": "12345-678"
+        }
+    ], 
+    "next": null
+}
