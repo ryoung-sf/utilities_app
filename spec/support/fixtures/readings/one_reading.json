@@ -12,7 +12,7 @@
         },
         {
           "type": "max",
-          "unit": "kw",
+          "unit": "kwh",
           "value": 81.3
         }
       ]

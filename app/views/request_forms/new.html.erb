@@ -1,12 +1,47 @@
-<div>
-  <h1 class="font-bold text-4xl">RequestForms#new</h1>
-  <p>It looks like you don't have any accounts. Let's add one!</p>
+<header class="shrink-0 border-b border-gray-200 bg-white">
+  <div class="mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-2">
+		<%= link_to root_path do %>
+    	<img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+		<% end %>
+    <div class="flex items-center gap-x-8">
+      <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-300">
+        <span class="sr-only">View notifications</span>
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+        </svg>
+      </button>
+      <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
+    </div>
+  </div>
+</header>
+
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Authorize Your Utility Account</h2>
+  </div>
+
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-sm">
+    <%= form_with url: request_forms_path, method: :post, data: { turbo: false }, html: { class: "space-y-6" } do |f| %>
+      
+      <div>
+        <%= f.label :customer_email, "Email address", class: "block text-sm font-medium leading-6 text-gray-900" %>
+        <div class="mt-2">
+          <%= f.email_field :customer_email, autofocus: true, required: true, placeholder: current_user.email, value: current_user.email, autocomplete: "email", id: "email", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-seafoamgreen sm:text-sm sm:leading-6" %>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between">
+          <%= f.label :utility, class: "block text-sm font-medium leading-6 text-gray-900" %>
+        </div>
+        <div class="mt-2">
+          <%= f.text_field :utility, id: "password", required: true, placeholder: "DEMO", autocomplete: "current-password", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-seafoamgreen sm:text-sm sm:leading-6" %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.submit "Authorize!", class: "flex w-full justify-center rounded-md bg-seafoamgreen px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seafoamgreen" %>
+      </div>
+    <% end %>
+  </div>
 </div>
- 
- <%= form_with url: request_forms_path, method: :post, data: { turbo: false } do |f| %>
-  <%= f.label :customer_email, "Email" %>
-  <%= f.email_field :customer_email, placeholder: current_user.email, value: current_user.email %>
-  <%= f.label :utility %>
-  <%= f.text_field :utility, placeholder: "PGE" %>
-  <%= f.submit "Authorize!" %>
- <% end %>

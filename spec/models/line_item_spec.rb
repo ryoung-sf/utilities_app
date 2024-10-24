@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe LineItem, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "associations" do
+    it "should belong to a bill" do
+      line_item = create(:line_item)
+      expect(line_item).to belong_to(:bill)
+    end
+  end
 end
 
 # == Schema Information

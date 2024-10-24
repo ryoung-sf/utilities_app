@@ -11,6 +11,7 @@ module Bill::FetchOne
       new_bills_from(raw_bills).each do |bill_response|
         new_bill = Bill::Add.call(bill_response, meter.id)
         LineItem::FetchOne.call(bill_response[:line_items], new_bill.id)
+        LineItem::CreateFakeReadings.call(new_bill)
       end
     end
 

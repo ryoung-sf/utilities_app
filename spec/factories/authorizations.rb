@@ -1,22 +1,22 @@
 FactoryBot.define do
   factory :authorization do
-    external_uid { "12345" }
-    submitted_date { "2024-05-29 11:19:49" }
-    customer_email { "user_utility_email@example.com" }
+    external_uid { "auth_12345" }
+    submitted_at { "2024-05-29 11:19:49" }
+    customer_email { "pfry@planetexpress.com" }
     customer_signature { '{"type"=>"text", "ts"=>"2016-01-01T12:30:24.653422+00:00", "full_name"=>"Philip J. Fry"}' }
-    declined_date { nil }
-    expired_date { nil }
+    declined_at { nil }
+    expired_at { nil }
     exports_list { '{}' }
     is_archived { false }
     notes { 
       '[{"type": "access_valid", "msg": "Succesfully registered with account number.", "ts": "2019-01-01T12:32:42.347321+00:00"}, {"type": "meters_full", "msg": "Found all meters available.", "ts"=>"2019-01-01T12:32:42.347321+00:00"},]'
     }
     nickname { "Home PGE Account" }
-    revoked_date { nil }
+    revoked_at { nil }
     scope { "{}" }
     status { "Updated" }
     status_message { "Meters found!" }
-    status_updated_date { "2019-01-01T12:32:42.347321+00:00" }
+    status_updated_at { "2019-01-01T12:32:42.347321+00:00" }
     utility { "PG&E" }
     user { default_user }
   end

@@ -3,15 +3,18 @@ require 'rails_helper'
 RSpec.describe Meter, type: :model do
   
   def create_meter(params: {})
-    params[:billing_account_id] = create(:billing_account).id unless params[:billing_account_id]
     create(:meter, params)
   end
 
   describe "associations" do
-    it "should belong to a billing_account" do
+    it "should belong to a user" do
       meter = create_meter
+      expect(meter).to belong_to(:user)
+    end
 
-      expect(meter).to belong_to(:billing_account)
+    it "should belong to an authorization" do
+      meter = create_meter
+      expect(meter).to belong_to(:authorization)
     end
 
     it "should have many readings" do
@@ -21,7 +24,7 @@ RSpec.describe Meter, type: :model do
 
     it "should have many bills" do
       meter = create_meter
-      expect(meter).to have_many(:bills).through(:billing_account)
+      expect(meter).to have_many(:bills)
     end
   end
 end

@@ -14,7 +14,6 @@ RSpec.describe "user login", type: :system do
     click_on("Log in")
 
     expect(page).to have_content("Signed in successfully.")
-    # expect(page).to have_content("First Name")
   end
 
   it "when user with email not found" do

@@ -1,7 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Bill, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "associations" do
+    it "should belong to meter" do
+      bill = create(:bill)
+      expect(bill).to belong_to(:meter)
+    end
+
+    it "should have many line items" do
+      bill = create(:bill)
+      expect(bill).to have_many(:line_items)
+    end
+  end
 end
 
 # == Schema Information

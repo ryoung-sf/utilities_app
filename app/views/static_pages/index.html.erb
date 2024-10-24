@@ -5,8 +5,8 @@
         <h1 class="text-2xl font-semibold text-gray-900">Utility Bill Tracker</h1>
       </div>
       <div class="hidden md:flex items-center space-x-6">
-        <%= link_to "Products", "#", class: "text-sm font-semibold leading-6 text-gray-900" %>
-        <%= link_to "Features", "#", class: "text-sm font-semibold leading-6 text-gray-900" %>
+        <%= link_to "Products", products_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        <%= link_to "Features", features_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         <%= link_to "About", about_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         <%= link_to "Contact", contact_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         <%= link_to new_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" do %>
@@ -16,9 +16,7 @@
       <div class="flex md:hidden" data-controller="dropdown">
         <button
           type="button"
-          class="-m-2.5 inline-flex items-center
-          justify-center rounded-md
-          p-2.5 text-seafoamgreen"
+          class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-seafoamgreen"
           data-dropdown-target="button"
           data-action="click->dropdown#toggle keydown.esc->dropdown#toggle click@window->dropdown#hide"
         >

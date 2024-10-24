@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :reading do
-    external_uid { "MyString" }
-    start_date { "2024-06-04 11:00:29" }
-    end_date { "2024-06-04 11:00:29" }
+    start_at { "2015-01-07T08:30:00.000000-07:00" }
+    end_at { "2015-02-05T08:45:00.000000-07:00" }
     unit { "kwh" }
-    value_time_1000 { "1820" }
-    type { "net" }
+    volume_type { "net" }
+    meter { create(:meter) }
+    value { 20.5 }
   end
 end
 

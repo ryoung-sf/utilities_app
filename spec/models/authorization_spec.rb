@@ -6,10 +6,10 @@ RSpec.describe Authorization, type: :model do
       authorization = create(:authorization)
       expect(authorization).to belong_to(:user)
     end
-    
-    it "should have many billing accounts" do
+
+    it "should respond to meters" do
       authorization = create(:authorization)
-      expect(authorization).to have_many(:billing_accounts)
+      expect(authorization).to have_many(:meters)
     end
   end
 
@@ -30,46 +30,46 @@ RSpec.describe Authorization, type: :model do
       expect(authorization.is_declined?).to be false
     end
 
-    it "should return true when declined_date is present" do
+    it "should return true when declined_at is present" do
       authorization = create(:authorization)
-      authorization.declined_date = 1.year.ago
+      authorization.declined_at = 1.year.ago
       
       expect(authorization.is_declined?).to be true
     end
   end
 
   describe "is_expired?" do
-    it "should return false when expired_date is nil" do
+    it "should return false when expired_at is nil" do
       authorization = create(:authorization)
 
       expect(authorization.is_expired?).to be false
     end
 
-    it "should return false when expired_date is present and in the future" do
+    it "should return false when expired_at is present and in the future" do
       authorization = create(:authorization)
-      authorization.expired_date = 1.year.from_now
+      authorization.expired_at = 1.year.from_now
     
       expect(authorization.is_expired?).to be false
     end
 
-    it "should return true when expired_date is present and in the past" do
+    it "should return true when expired_at is present and in the past" do
       authorization = create(:authorization)
-      authorization.expired_date = 1.year.ago
+      authorization.expired_at = 1.year.ago
       
       expect(authorization.is_expired?).to be true
     end
   end
 
   describe "is_revoked?" do
-    it "should return false when expired_date is nil" do
+    it "should return false when expired_at is nil" do
       authorization = create(:authorization)
 
       expect(authorization.is_revoked?).to be false
     end
 
-    it "should return false when expired_date is present and in the future" do
+    it "should return false when expired_at is present and in the future" do
       authorization = create(:authorization)
-      authorization.revoked_date = Time.zone.now
+      authorization.revoked_at = Time.zone.now
     
       expect(authorization.is_revoked?).to be true
     end
