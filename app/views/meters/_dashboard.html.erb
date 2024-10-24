@@ -1,0 +1,160 @@
+<div id="dashboard">
+  <div class="mt-6 mb-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:px-2">
+    <div class="group relative rounded-lg border">
+      <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white lg:aspect-none group-hover:opacity-75 lg:h-80">
+        <div class="p-2 flex h-full flex-col justify-between">
+        <p class="text-gray-400">Statement Details</p>
+          <div>
+            <p>Customer Name</p>
+            <p>Account: 123456890</p>
+          </div>
+          <div>
+            <p>123 Main St <span class="block">Apt 3004</span> Anywhere, CA 12234</p>
+          </div>
+          <p class="text-center"><%= bill_date_range(bill) %></p>
+        </div>
+      </div>
+    </div>
+    <div class="group relative border rounded-lg">
+      <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white  group-hover:opacity-75 lg:h-80">
+        <div class="p-2 flex h-full flex-col justify-between">
+        <p class="text-gray-400">Bill Details</p>
+          <div class="flex justify-center">
+            <span>$</span><p class="text-6xl"> <%= bills.first.total_cost %></p>
+            <p class="text-xl <%= change_color_class(bill.change_in_total_cost) %>"><%= bill.change_in_total_cost %>% </p>
+          </div>
+          <p class="text-center"><%= bill_date_range(bill) %></p>
+        </div>
+      </div>
+    </div>
+    <div class="group relative border rounded-lg">
+      <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white  group-hover:opacity-75 lg:h-80">
+        <div class="p-2 flex h-full flex-col justify-between">
+        <p class="text-gray-400">Total KWH Usage</p>
+          <div class="flex justify-center">
+            <p class="text-6xl"><%= bills.first.total_kwh %></p>
+            <p class="text-xl <%= change_color_class(bill.change_in_total_kwh) %>"><%= bill.change_in_total_kwh %>%</p>
+          </div>
+          <p class="text-center"><%= bill_date_range(bill) %></p>
+        </div>
+      </div>
+    </div>
+    <div class="group relative border rounded-lg">
+      <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white  group-hover:opacity-75 lg:h-80">
+        <div class="p-2 flex h-full flex-col justify-between relative">
+          <p class="text-gray-400 absolute">Past 6 Months</p>
+          <div class="flex justify-center pb-2">
+            <%= 
+              column_chart bills.prior_6_months_statements(bills.first.statement_at).bills_by_month_year,
+              prefix: "$",
+              thousands: ",",
+							zeros: true,
+							round: 2,
+              dataset: {
+                borderRadius: 5,
+              },
+              colors: ["#B1D8B7", "#B1D8B7", "#B1D8B7", "#B1D8B7", "#B1D8B7" ,"#2F5233"],
+              library: {
+                scales: {
+                  y: {
+                    ticks: {
+                      display: false
+                    },
+                    grid: {
+                      display: false,
+                    },
+                    border: {
+                      display: false,
+                    },
+                  },
+                  x: {
+                    grid: {
+                      display: false,
+                    },
+                    border: {
+                      display: false,
+                    },
+                  },
+                },
+              }
+            %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto mt-4 px-2 pb-2">
+    <div class="flex flex-col space-y-6 border border-gray-200 p-2 bg-white rounded-lg">
+      <div class="flex">
+        <p class="bg-green-200 rounded-full p-2">
+          <%= image_tag("lightning32px.png") %>
+        </p>
+      </div>
+      <div class="flex flex-col">
+        <p class="text-lg font-semibold">
+          <%= bills.first.total_kwh %> KWH
+        </p>
+        <p class="text-sm font-extralight">
+          Peak Consumption Per Day - <%= readings_date_range(readings.first, readings.last)%>
+        </p>
+      </div>
+      <div>
+          <%= line_chart readings&.total_peak_kwh_chart_data.map { |type|
+              {
+                name: type[:name],
+                data: type[:data], 
+                dataset:
+                  { 
+                    yAxisID: type[:yAxisID]
+                  }
+              }
+            },
+            colors: ["#2F5233", "#B1D8B7"],
+            round: 2,
+            zeros: true,
+            library: { 
+              scales: {
+                y: { 
+                  ticks: { 
+                    display: false
+                  },
+                  grid: {
+                      display: false
+                  },
+                  position: "left",
+                  border: {
+                    display: false
+                  }
+                },
+                y1: {
+                  max: 5,
+                  ticks: {
+                    display: false
+                  },
+                  grid: {
+                    display: false
+                  },
+                  position: "right",
+                  border: {
+                    display: false
+                  }
+                },
+                x: {
+                  ticks: {
+                    display: false
+                  },
+                  grid: {
+                    display: false
+                  },
+                  border: {
+                    display: false
+                  }
+                }
+              }
+            }
+          %>
+      </div>
+    </div>
+  </div>
+</div>

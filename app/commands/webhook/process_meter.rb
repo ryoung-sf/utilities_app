@@ -25,11 +25,3 @@ module Webhook::ProcessMeter
     end
   end
 end
-
-
-# when "meter_historical_collection_started"
-# when "meter_historical_collection_delayed"
-# when "meter_historical_collection_retrying"
-# when "meter_historical_collection_progress"
-# when "meter_historical_collection_finished_successful"
-# when "meter_historical_collection_finished_errored"

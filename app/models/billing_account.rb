@@ -4,9 +4,6 @@ class BillingAccount < ApplicationRecord
 
   has_many :meters, dependent: :destroy
   has_many :bills, through: :meters
-
-  # validates :external_uid, presence: true
-  # validates :utility_account_id, presence: true
 end
 
 # == Schema Information

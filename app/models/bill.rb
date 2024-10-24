@@ -23,7 +23,6 @@ class Bill < ApplicationRecord
 
   class << self
     def bills_by_month_year
-      # group_by_month(:statement_at, format: "%b %y").sum(:total_cost_cents)
       group_by_month(:statement_at, format: "%b %y").sum(:total_cost_cents).transform_values { |v| v/100.0 }
     end
 

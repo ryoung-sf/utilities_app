@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "dashboard" do %>
+  <%= render partial: "meters/dashboard" , locals: { bill: bill, bills: bills, readings: readings, user: current_user } %>
+<% end %> 

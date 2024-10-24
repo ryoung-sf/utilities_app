@@ -10,8 +10,6 @@ module BillingAccount::FetchOne
         Meter::FetchOne.call({authorizations: params[:authorizations]})
       else
         new_billing_accounts_from(raw_billing_accounts).each do |billing_account_response|
-          # SendApiRequestJob.set(good_job_labels: ["utility_request"])
-          #   .perform_later(Meter::FetchOne.call({uid: billing_account_response[:meter_uids][0]}))
           new_billing_account = BillingAccount::Add.call(billing_account_response, user_id)
           Meter::FetchOne.call({uid: billing_account_response[:meter_uids][0]})
         end
@@ -23,9 +21,6 @@ module BillingAccount::FetchOne
     def fetch_raw_billing_accounts(params)
       raw_billing_accounts = connection.list_billing_accounts(params)
       return raw_billing_accounts[:body][:billing_accounts] if raw_billing_accounts[:body][:next] == "null"
-      # if raw_bills[:body][:next] != null # https://utilityapi.com/api/v2/accounting/billing-accounts?after=234
-
-      # end
     end
 
     def new_billing_accounts_from(raw_billing_accounts)
@@ -48,9 +43,5 @@ module BillingAccount::FetchOne
 
       billing_account_response
     end
-
-    # def parse_next_url(url) 
-    #   url.split("?")[1].split("=")
-    # end
   end
 end

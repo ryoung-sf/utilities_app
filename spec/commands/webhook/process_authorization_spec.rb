@@ -20,7 +20,7 @@ RSpec.describe Webhook::ProcessAuthorization do
       authorization = create(:authorization, nickname: "Old Nickname", status_updated_at: Time.zone.local(2001, 2, 2))
       authorization_event = raw_event[:events].first
 
-      # expect(Authorization::Update).to receive(:call).with(authorization)
+      expect(Authorization::Update).to receive(:call).with(authorization)
       described_class.call(authorization_event)
     end
   end

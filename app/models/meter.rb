@@ -2,7 +2,6 @@ class Meter < ApplicationRecord
   belongs_to :authorization
   belongs_to :user
   
-  # has_many :bills, -> { order "statement_at DESC" }, dependent: :destroy
   has_many :bills, dependent: :destroy
   has_many :readings, dependent: :destroy
 
@@ -15,10 +14,6 @@ class Meter < ApplicationRecord
   def bills_statement_period_between(start_date = nil, end_date = nil)
     bills.statement_period_between(start_date, end_date)
   end
-
-  # def readings_occurred_between(start_date = nil, end_date = nil)
-  #   readings.occurred_between(start_date, end_date)
-  # end
 
   def total_kwh_per_day(ranged_readings)
     ranged_readings.group_by_day(:start_at).sum(:value)

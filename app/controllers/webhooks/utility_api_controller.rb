@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Webhooks::UtilityApiController < Webhooks::BaseController
-  # curl -X POST http://localhost:3000/webhooks/utility_api -H 'Content-Type: application/json' -d '{"test": "testing"}'
-
   def create
     record = InboundWebhook.create(body: payload)
 

@@ -6,7 +6,6 @@ RSpec.describe Reading::FetchOne do
   file = File.read("spec/support/fixtures/readings/mulitple_readings.json")
 
   def stub_raw_readings(response: file)
-    # response = File.read("spec/support/fixtures/readings/mulitple_readings.json")
     stub_request(:get, "https://utilityapi.com/api/v2/intervals")
       .with(query: hash_including({}))
       .to_return(status: 200, body: response, headers: { "Content-Type" => "application/json" })

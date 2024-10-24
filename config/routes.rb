@@ -7,9 +7,9 @@ Rails.application.routes.draw do
       resources :bills, only: %i[index]
       resources :readings, only: %i[index]
     end
+    get "meters/dates", to: "meters#statement_date"
   end
   
-  # resources :billing_accounts, only: %i[index]
   resources :request_forms, only: %i[new create url]
   get "request_forms/url", to: "request_forms#url", as: :url_request_form
   get 'authorizations/receive', to: "authorizations#receive"
