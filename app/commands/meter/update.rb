@@ -19,6 +19,7 @@ module Meter::Update
             status: raw_meter[:status],
             status_message: raw_meter[:status_message],
             notes: raw_meter[:notes],
+            bill_count: raw_meter[:bill_count]
           )
         end
       end

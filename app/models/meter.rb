@@ -7,6 +7,12 @@ class Meter < ApplicationRecord
 
   delegate :occurred_between, to: :readings
 
+  class << self
+    def total_bill_count
+      sum(:bill_count)
+    end
+  end
+
   def bills_statement_date_between(start_date = nil, end_date = nil)
     bills.statement_date_between(start_date, end_date)
   end

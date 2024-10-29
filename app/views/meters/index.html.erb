@@ -21,7 +21,7 @@
       <div data-controller="statement-date">
         <%= form_with(url: "/", method: :get) do |f| %>
             <%= f.select :bill_date,
-                bill.meter.bills.map { |bill| [bill.statement_at.to_date, bill.statement_at] },
+                bills.sort_by(&:statement_at).reverse.map { |bill| [bill.statement_at.to_date, bill.statement_at] },
                 {},
                 data: { action: "change->statement-date#change"},
                 class: "border border-gray-300 rounded-md p-4"
@@ -44,7 +44,7 @@
           <div class="p-2 flex h-full flex-col justify-between">
           <p class="text-gray-400">Statement Details</p>
             <div>
-              <p>Customer Name</p>
+              <p><%= current_user.email %></p>
               <p>Account: 123456890</p>
             </div>
             <div>
@@ -84,7 +84,7 @@
             <p class="text-gray-400 absolute">Past 6 Months</p>
             <div class="flex justify-center pb-2">
               <%= 
-                column_chart bills.prior_6_months_statements(bills.first.statement_at).bills_by_month_year,
+                column_chart bills.prior_6_months_statements(bill.statement_at).bills_by_month_year,
                 prefix: "$",
                 thousands: ",",
                 zeros: true,

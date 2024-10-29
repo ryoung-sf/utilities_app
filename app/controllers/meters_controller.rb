@@ -1,15 +1,21 @@
 class MetersController < ApplicationController
   def index
-    if current_user.authorizations.empty?
+    if current_user&.authorizations.empty?
       redirect_to new_request_form_path
     end
-
-    meter = policy_scope(Meter).first
-    if meter
-      bills = meter.bills&.prior_6_months_statements(Time.zone.local(2024, 7, 1)).preload(:line_items)
-      bill = bills.first
-      readings = meter.readings&.occurred_between(bill.start_at, bill.end_at)
-      render(locals: { bill: bill, bills: bills, readings: readings, user: current_user })
+    
+    if current_user&.authorizations.any?
+      if current_user&.bills.size <= 10 || current_user&.readings.empty?
+        historical_collection
+      else
+        meter = policy_scope(Meter).first
+        if meter
+          bills = meter.bills
+          bill = bills.ordered.first
+          readings = meter.readings&.occurred_between(bill.start_at, bill.end_at)
+          render(locals: { bill: bill, bills: bills, readings: readings, user: current_user })
+        end
+      end
     end
   end
 
@@ -23,7 +29,7 @@ class MetersController < ApplicationController
 
     meter = policy_scope(Meter).first
     bills = meter.bills&.prior_6_months_statements(statement_date).preload(:line_items)
-    bill = bills.first
+    bill = bills.ordered.first
     readings = meter.readings&.occurred_between(bill.start_at, bill.end_at)
 
     respond_to do |format|
@@ -32,5 +38,9 @@ class MetersController < ApplicationController
         partial: "meters/dashboard",
         locals: { bill: bill, bills: bills, readings: readings, user: current_user }) }
     end
+  end
+
+  def historical_collection
+    render "meters/historical_collection"
   end
 end
