@@ -8,6 +8,7 @@ module Meter::Add
         service_class: meter[:base][:service_class],
         service_id: meter[:base][:service_identifier],
         service_tariff: meter[:base][:service_tariff],
+        bill_count: meter[:bill_count],
         activated_at: meter[:created],
         utility_meter_id: meter[:base][:meter_numbers][0],
         status_at: meter[:status_ts],

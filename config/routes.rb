@@ -6,8 +6,11 @@ Rails.application.routes.draw do
     root to: "meters#index", as: :authenticated_user_root do
       resources :bills, only: %i[index]
       resources :readings, only: %i[index]
+      
     end
+    
     get "meters/dates", to: "meters#statement_date"
+    get "meters/historical_collection", to: "meters#historical_collection"
   end
   
   resources :request_forms, only: %i[new create url]
