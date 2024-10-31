@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => "/cable"
+
   resources :meters, only: %i[index]
+  # get "meters/historical_collection", to: "meters#historical_collection"
   devise_for :users
   
   authenticated :user do
     root to: "meters#index", as: :authenticated_user_root do
       resources :bills, only: %i[index]
       resources :readings, only: %i[index]
-      
     end
     
     get "meters/dates", to: "meters#statement_date"

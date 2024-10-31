@@ -15,16 +15,10 @@
   </div>
 </header>
 
-<div>
-  Collecting data for your meters
-
-  <h2>
-    <%= current_user.meters.total_bill_count  %>
-  </h2>
-
-  <h2>
-    <%= current_user.bills.count  %>
-  </h2>
-
-
+<div data-controller="bills-count" class="mx-auto">
+  <div class="flex flex-row justify-center pt-10 mx-auto">
+    <div class="text-xl text-seafoamgreen px-4 py-4 rounded-md font-semibold" id="link">
+      Your meter data is being collected. Please wait as your dashboard is prepared!
+    </div>
+  </div>
 </div>

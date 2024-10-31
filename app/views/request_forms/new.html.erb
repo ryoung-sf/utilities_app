@@ -1,7 +1,7 @@
 <header class="shrink-0 border-b border-gray-200 bg-white">
   <div class="mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-2">
 		<%= link_to root_path do %>
-    	<img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+            <h1 class="text-2xl font-semibold text-gray-900">Utility Bill Tracker</h1>
 		<% end %>
     <div class="flex items-center gap-x-8">
       <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-300">
@@ -35,7 +35,7 @@
           <%= f.label :utility, class: "block text-sm font-medium leading-6 text-gray-900" %>
         </div>
         <div class="mt-2">
-          <%= f.text_field :utility, id: "password", required: true, placeholder: "DEMO", autocomplete: "current-password", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-seafoamgreen sm:text-sm sm:leading-6" %>
+          <%= f.text_field :utility, value: "DEMO", id: "password", required: true, placeholder: "DEMO", autocomplete: "current-password", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-seafoamgreen sm:text-sm sm:leading-6" %>
         </div>
       </div>
 

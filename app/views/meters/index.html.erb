@@ -1,8 +1,8 @@
 <header class="shrink-0 border-b border-gray-200 bg-white">
   <div class="mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-2">
     <%= link_to root_path do %>
-			<img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
-		<% end %>
+		<h1 class="text-2xl font-semibold text-gray-900">Utility Bill Tracker</h1>
+    <% end %>
     <div class="flex items-center gap-x-8">
       <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-300">
         <span class="sr-only">View notifications</span>
@@ -28,7 +28,6 @@
             %>
         <% end %>
       </div>
-
       <div class="py-1.5 px-3 text-white bg-seafoamgreen border rounded-lg my-auto">
             <%= link_to "Add another meter", new_request_form_path %>
       </div>
