@@ -13,6 +13,8 @@ module Bill::FetchOne
         LineItem::FetchOne.call(bill_response[:line_items], new_bill.id)
         LineItem::CreateFakeReadings.call(new_bill)
       end
+
+      ActionCable.server.broadcast("bills", "Bills added!") if meter.reload.bills.any?
     end
 
     private
