@@ -24,7 +24,7 @@
                 bills.sort_by(&:statement_at).reverse.map { |bill| [bill.statement_at.to_date, bill.statement_at] },
                 {},
                 data: { action: "change->statement-date#change"},
-                class: "border border-gray-300 rounded-md p-4"
+                class: "border border-gray-300 rounded-md py-2"
             %>
         <% end %>
       </div>
