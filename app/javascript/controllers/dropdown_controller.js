@@ -7,7 +7,6 @@ export default class extends Controller {
 
   toggle() {
     toggle(this.menuTarget)
-    console.log("hide")
   }
 
   hide(event) {
