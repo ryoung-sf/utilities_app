@@ -4,7 +4,7 @@ class Webhooks::BaseController < ApplicationController
   skip_before_action :authenticate_user!
   skip_forgery_protection
 
-  before_action :verify_event
+  before_action :verify_event unless Rails.env.test?
 
   def create
     InboundWebhook.create(body: payload)

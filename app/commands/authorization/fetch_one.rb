@@ -4,7 +4,6 @@ module Authorization::FetchOne
   class << self
     def call(params)
       raw_auths = fetch_raw_auths(params)
-
       new_auths_from(raw_auths).each do |auth|
         user_id = User.find_by(email: auth[:customer_email]).id
         Authorization::Add.call(auth, user_id)

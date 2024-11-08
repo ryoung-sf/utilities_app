@@ -34,4 +34,5 @@ end
 #  authorization_id :uuid             not null
 #  status_message   :string
 #  notes            :jsonb
+#  bill_count       :integer          default(0), not null
 #

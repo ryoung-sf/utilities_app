@@ -5,7 +5,7 @@ class MetersController < ApplicationController
     end
     
     if current_user&.authorizations.any?
-      if current_user&.bills.size <= 10 || current_user&.readings.empty?
+      if current_user&.bills.size <= 4 || current_user&.readings.empty?
         historical_collection
       else
         meter = policy_scope(Meter).first
