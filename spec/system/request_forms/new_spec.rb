@@ -3,19 +3,32 @@
 require "rails_helper"
 
 RSpec.describe "request_forms/new", type: :system do
-  # def receive_params
-  #   { referral: 123, state: "abc" }
-  # end
+  context "when user has no authorized accounts" do
+    it "submits new account request Form" do
+      utility_api_stub(
+        method: :post,
+        path: "forms",
+        file: "./spec/support/fixtures/forms/successful_request.json",
+      )
 
-  # context "when user has no authorized billing accounts" do
-  #   it "submits new account request Form" do
-  #     login_as(default_user)
+      utility_api_stub(
+        method: :get,
+        path: "authorizations",
+        file: "./spec/support/fixtures/authorizations/one_authorization_meters.json",
+        query: { referrals: "1234" }
+      )
 
-  #     fill_in "customer_email", with: default_user.email
-  #     fill_in "utility", with: "DEMO"
-  #     click_on "Authorize!"
+      login_as(default_user)
 
-  #     visit authorizations_receive_path, params: receive_params
-    # end
-  # end
+      expect(page).to have_content("Authorize Your Utility Account")
+
+      fill_in "customer_email", with: default_user.email
+      fill_in "utility", with: "DEMO"
+      click_on "Authorize!"
+
+      visit "/authorizations/receive?#{receive_params}"
+
+      expect(page).to have_content("Your meter data is being collected. Please wait as your dashboard is prepared!")
+    end
+  end
 end

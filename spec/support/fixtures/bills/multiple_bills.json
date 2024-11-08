@@ -1,0 +1,659 @@
+{
+    "bills": [
+      {
+        "uid": "bill_12345",
+        "meter_uid": "meter_12345",
+        "authorization_uid": "auth_12345",
+        "created": "2015-03-19T20:50:41.206253+00:00",
+        "updated": "2015-03-19T20:50:41.206253+00:00",
+        "utility": "DEMO",
+        "blocks": ["base", "sources", "line_items", "tiers"],
+        "base": {
+            "service_identifier": "1234567890",
+            "service_tariff": "E1 XB Residential Service",
+            "service_class": "res-electric",
+            "service_address": "123 Main St #100, Anytown, CA 94612",
+            "meter_numbers": ["A987654321"],
+            "billing_contact": "ACME, INC.",
+            "billing_address": "123 Main St #100, Anytown, CA 94612",
+            "billing_account": "100-200-33333",
+            "bill_start_date": "2015-01-07T00:00:00.000000-08:00",
+            "bill_end_date": "2015-02-05T00:00:00.000000-08:00",
+            "bill_total_kwh": 837.0,
+            "bill_total_unit": "kwh",
+            "bill_total_volume": 837.0,
+            "bill_total_cost": 194.78,
+            "bill_statement_date": "2015-02-05T08:00:00.000000+00:00"
+        },
+        "sources": [
+            {
+                "type": "pdf",
+                "raw_url": "https://utilityapi.com/api/v2/files/abc123abc123abc123"
+            }
+        ],
+        "line_items": [
+            {
+                "cost": 52.88,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 1 Usage",
+                "rate": 0.1617,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 327.0
+            },
+            {
+                "cost": 18.14,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 2 Usage",
+                "rate": 0.18491,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 98.1
+            },
+            {
+                "cost": 62.54,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 3 Usage",
+                "rate": 0.27322,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 228.9
+            },
+            {
+                "cost": 60.98,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 4 Usage",
+                "rate": 0.33322,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 183.0
+            },
+            {
+                "cost": 0.24,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Energy Commission Tax",
+                "rate": null,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": null,
+                "volume": null
+            }
+        ],
+        "tiers": [
+            {
+                "name": "Tier 1 Usage",
+                "level": 1,
+                "cost": 52.88,
+                "volume": 327.0,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 2 Usage",
+                "level": 2,
+                "cost": 18.14,
+                "volume": 98.1,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 3 Usage",
+                "level": 3,
+                "cost": 62.54,
+                "volume": 228.9,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 4 Usage",
+                "level": 4,
+                "cost": 60.98,
+                "volume": 183.0,
+                "unit": "kwh"
+            }
+        ]
+      },
+      {
+        "uid": "bill_12346",
+        "meter_uid": "meter_12345",
+        "authorization_uid": "auth_12345",
+        "created": "2015-03-19T20:50:41.206253+00:00",
+        "updated": "2015-03-19T20:50:41.206253+00:00",
+        "utility": "DEMO",
+        "blocks": ["base", "sources", "line_items", "tiers"],
+        "base": {
+            "service_identifier": "1234567890",
+            "service_tariff": "E1 XB Residential Service",
+            "service_class": "res-electric",
+            "service_address": "123 Main St #100, Anytown, CA 94612",
+            "meter_numbers": ["A987654321"],
+            "billing_contact": "ACME, INC.",
+            "billing_address": "123 Main St #100, Anytown, CA 94612",
+            "billing_account": "100-200-33333",
+            "bill_start_date": "2015-02-07T00:00:00.000000-08:00",
+            "bill_end_date": "2015-03-05T00:00:00.000000-08:00",
+            "bill_total_kwh": 937.0,
+            "bill_total_unit": "kwh",
+            "bill_total_volume": 937.0,
+            "bill_total_cost": 200.78,
+            "bill_statement_date": "2015-03-05T08:00:00.000000+00:00"
+        },
+        "sources": [
+            {
+                "type": "pdf",
+                "raw_url": "https://utilityapi.com/api/v2/files/abc123abc123abc123"
+            }
+        ],
+        "line_items": [
+            {
+                "cost": 52.88,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 1 Usage",
+                "rate": 0.1617,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 327.0
+            },
+            {
+                "cost": 18.14,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 2 Usage",
+                "rate": 0.18491,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 98.1
+            },
+            {
+                "cost": 62.54,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 3 Usage",
+                "rate": 0.27322,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 228.9
+            },
+            {
+                "cost": 60.98,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 4 Usage",
+                "rate": 0.33322,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 183.0
+            },
+            {
+                "cost": 0.24,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Energy Commission Tax",
+                "rate": null,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": null,
+                "volume": null
+            }
+        ],
+        "tiers": [
+            {
+                "name": "Tier 1 Usage",
+                "level": 1,
+                "cost": 52.88,
+                "volume": 327.0,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 2 Usage",
+                "level": 2,
+                "cost": 18.14,
+                "volume": 98.1,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 3 Usage",
+                "level": 3,
+                "cost": 62.54,
+                "volume": 228.9,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 4 Usage",
+                "level": 4,
+                "cost": 60.98,
+                "volume": 183.0,
+                "unit": "kwh"
+            }
+        ]
+      },
+      {
+        "uid": "bill_12347",
+        "meter_uid": "meter_12345",
+        "authorization_uid": "auth_12345",
+        "created": "2015-03-19T20:50:41.206253+00:00",
+        "updated": "2015-03-19T20:50:41.206253+00:00",
+        "utility": "DEMO",
+        "blocks": ["base", "sources", "line_items", "tiers"],
+        "base": {
+            "service_identifier": "1234567890",
+            "service_tariff": "E1 XB Residential Service",
+            "service_class": "res-electric",
+            "service_address": "123 Main St #100, Anytown, CA 94612",
+            "meter_numbers": ["A987654321"],
+            "billing_contact": "ACME, INC.",
+            "billing_address": "123 Main St #100, Anytown, CA 94612",
+            "billing_account": "100-200-33333",
+            "bill_start_date": "2015-03-07T00:00:00.000000-08:00",
+            "bill_end_date": "2015-04-05T00:00:00.000000-08:00",
+            "bill_total_kwh": 837.0,
+            "bill_total_unit": "kwh",
+            "bill_total_volume": 837.0,
+            "bill_total_cost": 240.78,
+            "bill_statement_date": "2015-04-05T08:00:00.000000+00:00"
+        },
+        "sources": [
+            {
+                "type": "pdf",
+                "raw_url": "https://utilityapi.com/api/v2/files/abc123abc123abc123"
+            }
+        ],
+        "line_items": [
+            {
+                "cost": 52.88,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 1 Usage",
+                "rate": 0.1617,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 327.0
+            },
+            {
+                "cost": 18.14,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 2 Usage",
+                "rate": 0.18491,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 98.1
+            },
+            {
+                "cost": 62.54,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 3 Usage",
+                "rate": 0.27322,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 228.9
+            },
+            {
+                "cost": 60.98,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 4 Usage",
+                "rate": 0.33322,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 183.0
+            },
+            {
+                "cost": 0.24,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Energy Commission Tax",
+                "rate": null,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": null,
+                "volume": null
+            }
+        ],
+        "tiers": [
+            {
+                "name": "Tier 1 Usage",
+                "level": 1,
+                "cost": 52.88,
+                "volume": 327.0,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 2 Usage",
+                "level": 2,
+                "cost": 18.14,
+                "volume": 98.1,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 3 Usage",
+                "level": 3,
+                "cost": 62.54,
+                "volume": 228.9,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 4 Usage",
+                "level": 4,
+                "cost": 60.98,
+                "volume": 183.0,
+                "unit": "kwh"
+            }
+        ]
+      },
+      {
+        "uid": "bill_12348",
+        "meter_uid": "meter_12345",
+        "authorization_uid": "auth_12345",
+        "created": "2015-03-19T20:50:41.206253+00:00",
+        "updated": "2015-03-19T20:50:41.206253+00:00",
+        "utility": "DEMO",
+        "blocks": ["base", "sources", "line_items", "tiers"],
+        "base": {
+            "service_identifier": "1234567890",
+            "service_tariff": "E1 XB Residential Service",
+            "service_class": "res-electric",
+            "service_address": "123 Main St #100, Anytown, CA 94612",
+            "meter_numbers": ["A987654321"],
+            "billing_contact": "ACME, INC.",
+            "billing_address": "123 Main St #100, Anytown, CA 94612",
+            "billing_account": "100-200-33333",
+            "bill_start_date": "2015-04-07T00:00:00.000000-08:00",
+            "bill_end_date": "2015-05-05T00:00:00.000000-08:00",
+            "bill_total_kwh": 727.0,
+            "bill_total_unit": "kwh",
+            "bill_total_volume": 727.0,
+            "bill_total_cost": 140.78,
+            "bill_statement_date": "2015-05-05T08:00:00.000000+00:00"
+        },
+        "sources": [
+            {
+                "type": "pdf",
+                "raw_url": "https://utilityapi.com/api/v2/files/abc123abc123abc123"
+            }
+        ],
+        "line_items": [
+            {
+                "cost": 52.88,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 1 Usage",
+                "rate": 0.1617,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 327.0
+            },
+            {
+                "cost": 18.14,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 2 Usage",
+                "rate": 0.18491,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 98.1
+            },
+            {
+                "cost": 62.54,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 3 Usage",
+                "rate": 0.27322,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 228.9
+            },
+            {
+                "cost": 60.98,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 4 Usage",
+                "rate": 0.33322,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 183.0
+            },
+            {
+                "cost": 0.24,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Energy Commission Tax",
+                "rate": null,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": null,
+                "volume": null
+            }
+        ],
+        "tiers": [
+            {
+                "name": "Tier 1 Usage",
+                "level": 1,
+                "cost": 52.88,
+                "volume": 327.0,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 2 Usage",
+                "level": 2,
+                "cost": 18.14,
+                "volume": 98.1,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 3 Usage",
+                "level": 3,
+                "cost": 62.54,
+                "volume": 228.9,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 4 Usage",
+                "level": 4,
+                "cost": 60.98,
+                "volume": 183.0,
+                "unit": "kwh"
+            }
+        ]
+      },
+      {
+        "uid": "bill_12349",
+        "meter_uid": "meter_12345",
+        "authorization_uid": "auth_12345",
+        "created": "2015-03-19T20:50:41.206253+00:00",
+        "updated": "2015-03-19T20:50:41.206253+00:00",
+        "utility": "DEMO",
+        "blocks": ["base", "sources", "line_items", "tiers"],
+        "base": {
+            "service_identifier": "1234567890",
+            "service_tariff": "E1 XB Residential Service",
+            "service_class": "res-electric",
+            "service_address": "123 Main St #100, Anytown, CA 94612",
+            "meter_numbers": ["A987654321"],
+            "billing_contact": "ACME, INC.",
+            "billing_address": "123 Main St #100, Anytown, CA 94612",
+            "billing_account": "100-200-33333",
+            "bill_start_date": "2015-05-07T00:00:00.000000-08:00",
+            "bill_end_date": "2015-06-05T00:00:00.000000-08:00",
+            "bill_total_kwh": 737.0,
+            "bill_total_unit": "kwh",
+            "bill_total_volume": 737.0,
+            "bill_total_cost": 160.78,
+            "bill_statement_date": "2015-06-05T08:00:00.000000+00:00"
+        },
+        "sources": [
+            {
+                "type": "pdf",
+                "raw_url": "https://utilityapi.com/api/v2/files/abc123abc123abc123"
+            }
+        ],
+        "line_items": [
+            {
+                "cost": 52.88,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 1 Usage",
+                "rate": 0.1617,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 327.0
+            },
+            {
+                "cost": 18.14,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 2 Usage",
+                "rate": 0.18491,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 98.1
+            },
+            {
+                "cost": 62.54,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 3 Usage",
+                "rate": 0.27322,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 228.9
+            },
+            {
+                "cost": 60.98,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 4 Usage",
+                "rate": 0.33322,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 183.0
+            },
+            {
+                "cost": 0.24,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Energy Commission Tax",
+                "rate": null,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": null,
+                "volume": null
+            }
+        ],
+        "tiers": [
+            {
+                "name": "Tier 1 Usage",
+                "level": 1,
+                "cost": 52.88,
+                "volume": 327.0,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 2 Usage",
+                "level": 2,
+                "cost": 18.14,
+                "volume": 98.1,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 3 Usage",
+                "level": 3,
+                "cost": 62.54,
+                "volume": 228.9,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 4 Usage",
+                "level": 4,
+                "cost": 60.98,
+                "volume": 183.0,
+                "unit": "kwh"
+            }
+        ]
+      },
+      {
+        "uid": "bill_12350",
+        "meter_uid": "meter_12345",
+        "authorization_uid": "auth_12345",
+        "created": "2015-03-19T20:50:41.206253+00:00",
+        "updated": "2015-03-19T20:50:41.206253+00:00",
+        "utility": "DEMO",
+        "blocks": ["base", "sources", "line_items", "tiers"],
+        "base": {
+            "service_identifier": "1234567890",
+            "service_tariff": "E1 XB Residential Service",
+            "service_class": "res-electric",
+            "service_address": "123 Main St #100, Anytown, CA 94612",
+            "meter_numbers": ["A987654321"],
+            "billing_contact": "ACME, INC.",
+            "billing_address": "123 Main St #100, Anytown, CA 94612",
+            "billing_account": "100-200-33333",
+            "bill_start_date": "2015-06-07T00:00:00.000000-08:00",
+            "bill_end_date": "2015-07-05T00:00:00.000000-08:00",
+            "bill_total_kwh": 837.0,
+            "bill_total_unit": "kwh",
+            "bill_total_volume": 837.0,
+            "bill_total_cost": 198.78,
+            "bill_statement_date": "2015-07-05T08:00:00.000000+00:00"
+        },
+        "sources": [
+            {
+                "type": "pdf",
+                "raw_url": "https://utilityapi.com/api/v2/files/abc123abc123abc123"
+            }
+        ],
+        "line_items": [
+            {
+                "cost": 52.88,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 1 Usage",
+                "rate": 0.1617,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 327.0
+            },
+            {
+                "cost": 18.14,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 2 Usage",
+                "rate": 0.18491,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 98.1
+            },
+            {
+                "cost": 62.54,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 3 Usage",
+                "rate": 0.27322,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 228.9
+            },
+            {
+                "cost": 60.98,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Tier 4 Usage",
+                "rate": 0.33322,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": "kwh",
+                "volume": 183.0
+            },
+            {
+                "cost": 0.24,
+                "end": "2015-02-05T08:00:00.000000+00:00",
+                "name": "Energy Commission Tax",
+                "rate": null,
+                "start": "2015-01-07T08:00:00.000000+00:00",
+                "unit": null,
+                "volume": null
+            }
+        ],
+        "tiers": [
+            {
+                "name": "Tier 1 Usage",
+                "level": 1,
+                "cost": 52.88,
+                "volume": 327.0,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 2 Usage",
+                "level": 2,
+                "cost": 18.14,
+                "volume": 98.1,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 3 Usage",
+                "level": 3,
+                "cost": 62.54,
+                "volume": 228.9,
+                "unit": "kwh"
+            },
+            {
+                "name": "Tier 4 Usage",
+                "level": 4,
+                "cost": 60.98,
+                "volume": 183.0,
+                "unit": "kwh"
+            }
+        ]
+      }
+    ],
+    "next": null
+  }

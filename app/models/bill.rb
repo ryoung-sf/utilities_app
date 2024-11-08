@@ -2,6 +2,8 @@ class Bill < ApplicationRecord
   belongs_to :meter
   has_many :line_items, dependent: :destroy
 
+  validates_presence_of :external_uid, :start_at, :end_at, :meter_id
+
   monetize :total_cost_cents
 
   scope :ordered, -> { order(statement_at: :desc) }
