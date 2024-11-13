@@ -108,7 +108,7 @@ Rails.application.configure do
   mailertogo_port     = ENV.fetch("MAILERTOGO_SMTP_PORT", 587)
   mailertogo_user     = ENV.fetch("MAILERTOGO_SMTP_USER")
   mailertogo_password = ENV.fetch("MAILERTOGO_SMTP_PASSWORD")
-  mailertogo_domain   = ENV.fetch("MAILERTOGO_DOMAIN", "heroku.com")
+  mailertogo_domain   = ENV.fetch("MAILERTOGO_DOMAIN", "ancient-jabuticaba-go7809un8c9p8g6bkzpbtn0q.herokudns.com")
 
   config.action_mailer.smtp_settings = {
     :address              => mailertogo_host,
