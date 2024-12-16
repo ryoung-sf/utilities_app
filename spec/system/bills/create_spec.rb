@@ -42,6 +42,8 @@ RSpec.describe "Create bills" do
       bills_added_webhook = File.read("./spec/support/fixtures/webhooks/meter_bills_added.json")
       post "/webhooks/utility_api", params: bills_added_webhook, headers: { "CONTENT_TYPE" => "application/json" }
 
+      perform_enqueued_jobs
+
       expect(user.bills.count).to equal(6)
       expect(user.readings).to_not be_empty
 

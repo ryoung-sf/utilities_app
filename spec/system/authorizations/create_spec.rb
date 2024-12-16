@@ -3,7 +3,6 @@
 require "rails_helper"
 
 RSpec.describe "Create authorization" do
-  
   context "when user successfully submits an authorizatin request" do
     it "submits new account request Form" do
       utility_api_stub(
@@ -20,6 +19,7 @@ RSpec.describe "Create authorization" do
       )
 
       login_as(default_user)
+      visit root_path
       
       fill_in "customer_email", with: default_user.email
       fill_in "utility", with: "DEMO"

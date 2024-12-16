@@ -19,6 +19,7 @@ RSpec.describe "request_forms/new", type: :system do
       )
 
       login_as(default_user)
+      visit root_path
 
       expect(page).to have_content("Authorize Your Utility Account")
 

@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :bill do
     external_uid { "bill_12345" }
-    start_at { "2024-06-02 08:29:01" }
-    end_at { "2024-06-02 08:29:01" }
+    start_at { "2024-06-02 00:00:00" }
+    end_at { "2024-07-02 00:00:00" }
     total_unit { "kWh" }
     total_cost_cents { 21800 }
     raw_url { "https://utilityapi.com/api/v2/files/abc123abc123abc123" }

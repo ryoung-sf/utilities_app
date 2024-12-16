@@ -36,10 +36,6 @@ RSpec.describe Meter, type: :model do
     end
   end
 
-  # describe "class methods" do
-
-  # end
-
   describe "instance methods" do
     context "bills_statement_date_between" do
       it "should return bills with statement date between start_date and end_date" do

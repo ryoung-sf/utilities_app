@@ -36,8 +36,12 @@ end
 RSpec.configure do |config|
   config.include(ActiveSupport::Testing::TimeHelpers)
   config.include(SystemHelpers, type: :system)
-  config.include UtilityApiHelpers
-  # config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include(SystemHelpers, type: :view)
+  config.include(UtilityApiHelpers)
+  config.include(Devise::Test::IntegrationHelpers, type: :system)
+  config.include(Devise::Test::ControllerHelpers, type: :view)
+  config.include(ActiveJob::TestHelper, type: :job)
+  config.include(ActiveJob::TestHelper, type: :system)
   # config.include Warden::Test::Helpers
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [

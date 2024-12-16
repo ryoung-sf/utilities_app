@@ -92,14 +92,6 @@ RSpec.describe Bill, type: :model do
         expect(Bill.bills_by_month_year).to eq({ "Jan 21" => 10.0, "Feb 21" => 5.0 })
       end
     end
-
-    # context "change_in_total_kwh" do
-    #   it "should return the change in total kwh" do
-    #     create(:bill, total_kwh: 1000, statement_at: Date.new(2021, 1, 1))
-    #     create(:bill, total_kwh: 500, statement_at: Date.new(2021, 2, 1))
-    #     expect(Bill.change_in_total_kwh).to eq([-50.0])
-    #   end
-    # end
   end
 
   describe "instance methods" do
