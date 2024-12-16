@@ -3,13 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Meter::Update do
-  def stub_raw_meters(meter)
-    json = File.read("spec/support/fixtures/meters/one_meter.json")
-    stub_request(:get, "https://utilityapi.com/api/v2/meters")
-      .with(query: hash_including({}))
-      .to_return(status: 200, body: json, headers: { "Content-Type" => "application/json" })
-  end
-
   context "when meter response has new information is updated" do
     it "updates the meter" do
       past_date = Time.zone.local(2011, 1, 1)
@@ -28,5 +21,14 @@ RSpec.describe Meter::Update do
       described_class.call(meter)
       expect(meter.status_at).to eq(time)
     end
+  end
+
+  private
+
+  def stub_raw_meters(meter)
+    json = File.read("spec/support/fixtures/meters/one_meter.json")
+    stub_request(:get, "https://utilityapi.com/api/v2/meters")
+      .with(query: hash_including({}))
+      .to_return(status: 200, body: json, headers: { "Content-Type" => "application/json" })
   end
 end

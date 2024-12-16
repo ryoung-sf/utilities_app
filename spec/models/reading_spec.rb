@@ -41,11 +41,6 @@ RSpec.describe Reading, type: :model do
   end
 
   describe "class methods" do
-
-    # def readings_hash(readings, days: 8, calculations: :sum)
-      # return hash of readings summed, averaged, or maxed by day
-    # end
-
     context "total_kwh_usage_per_day" do
       it "should return total kwh usage per day" do
         8.times do |i|

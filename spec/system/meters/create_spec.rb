@@ -40,6 +40,8 @@ RSpec.describe "Create meter" do
       create_meter_webhook = File.read("./spec/support/fixtures/webhooks/meter_created.json")
       post "/webhooks/utility_api", params: create_meter_webhook, headers: { "CONTENT_TYPE" => "application/json" }
 
+      perform_enqueued_jobs
+
       expect(user.meters.count).to equal(1)
     end
   end
