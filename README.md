@@ -2,12 +2,12 @@
 # Overview
 
 Demo App that makes connecting to your utility account easy!
-<img src="https://github.com/ryoung-sf/utilities_app/main/screenshots/dashboard.png">
+![dashboard]("https://github.com/ryoung-sf/utilities_app/screenshots/dashboard.png")
 
 ## Getting Started!
 
 1. Visit www.robyoungutility.com
-<img src="https://github.com/ryoung-sf/utilities_app/main/screenshots/homepage.png">
+![homepage](https://github.com/ryoung-sf/utilities_app/screenshots/homepage.png")
 
 2. Next, you will need to create an account. Click the sign-up button and follow the steps to create and account (check your spam incase you don't see a confirmation email).
 
@@ -20,13 +20,13 @@ Demo App that makes connecting to your utility account easy!
 5. You will be directed to UtilityAPI.com to grant access to the demo. You should see a page that resembles the below.
 * Do **NOT** enter your real utility credentials. Make sure the "Utility" drop down is set to demo and enter "test" as the username and password.
 * Click through to authorize the demo account
-<img src="https://github.com/ryoung-sf/utilities_app/main/screenshots/utilityapi_authorization.png">
+![Authorization Flow]("https://github.com/ryoung-sf/utilities_app/screenshots/utilityapi_authorization.png")
 
 6. UtilityAPI will redirect you back to the app (login again if necessary). The application is the process of collecting your meter data. After a few minutes, the collection will be complete. A button will appear. Click it to view your meter dashboard
-<img src="https://github.com/ryoung-sf/utilities_app/main/screenshots/historical_collection_in_progress.png">
+![Collection In Progress]("https://github.com/ryoung-sf/utilities_app/screenshots/historical_collection_in_progress.png")
 
 7. Once the meter collection is complete a button will to view the dashboard with the data will appear. Click on the button to see the below page
-<img src="https://github.com/ryoung-sf/utilities_app/main/screenshots/historical_collection_complete.png">
+![Collection Complete]("https://github.com/ryoung-sf/utilities_app/screenshots/historical_collection_complete.png")
 
 
 ## Download the project
