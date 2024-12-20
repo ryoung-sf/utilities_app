@@ -5,10 +5,10 @@
         <h1 class="text-2xl font-semibold text-gray-900">Utility Bill Tracker</h1>
       </div>
       <div class="hidden md:flex items-center space-x-6">
-        <%= link_to "Products", products_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-        <%= link_to "Features", features_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-        <%= link_to "About", about_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-        <%= link_to "Contact", contact_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        <%= link_to "Products", products_path, class: "hidden text-sm font-semibold leading-6 text-gray-900" %>
+        <%= link_to "Features", features_path, class: "hidden text-sm font-semibold leading-6 text-gray-900" %>
+        <%= link_to "About", about_path, class: "hidden text-sm font-semibold leading-6 text-gray-900" %>
+        <%= link_to "Contact", contact_path, class: "hidden text-sm font-semibold leading-6 text-gray-900" %>
         <%= link_to new_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" do %>
           Log in
         <% end %>
@@ -37,10 +37,10 @@
             aria-orientation="vertical" aria-labelledby="dropdown_example">
           <div class="bg-white rounded-md">
             <div class="p-1 flex flex-col space-y-1">
-              <%= link_to "Products", "#", class: "text-sm leading-6 text-gray-900" %>
-              <%= link_to "Features", "#", class: "text-sm leading-6 text-gray-900" %>
-              <%= link_to "About", about_path, class: "text-sm leading-6 text-gray-900" %>
-              <%= link_to "Contact", contact_path, class: "text-sm leading-6 text-gray-900" %>
+              <%= link_to "Products", "#", class: "hidden text-sm leading-6 text-gray-900" %>
+              <%= link_to "Features", "#", class: "hidden text-sm leading-6 text-gray-900" %>
+              <%= link_to "About", about_path, class: "hidden text-sm leading-6 text-gray-900" %>
+              <%= link_to "Contact", contact_path, class: "hidden text-sm leading-6 text-gray-900" %>
               <%= link_to new_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900 mt-2 border border-t-seafoamgreen" do %>
                 Log in
               <% end %>
@@ -62,7 +62,7 @@
           </div>
         </div>
         <h1 class="mt-24 text-4xl font-bold text-seafoamgreen text-shadow tracking-tight text-gray-900 sm:mt-10 sm:text-6xl">Monitor your utility bill</h1>
-        <p class="mt-6 text-lg leading-8 text-gray-600 break-words">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
+        <p class="mt-6 text-lg leading-8 text-gray-600 break-words">Connecting to your personal utility account made easy!</p>
         <div class="mt-10 flex items-center gap-x-6">
           <%= link_to "Sign up", new_user_registration_path, class: "rounded-xl bg-seafoamgreen px-12 py-2.5 text-sm font-semibold text-white shadowhover:bg-limegreen focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600" %>
         </div>
