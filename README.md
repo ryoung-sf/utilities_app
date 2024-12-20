@@ -1,10 +1,11 @@
-
+   
 # Overview
 
 Demo App that makes connecting to your utility account easy!
 
 
 ![dashboard](https://github.com/ryoung-sf/utilities_app/blob/ee092d0aba58c5e1a79151349db0dd573d2bd620/screenshots/dashboard.png)
+
 
 ## Getting Started!
 
@@ -38,6 +39,7 @@ Demo App that makes connecting to your utility account easy!
 ## Download the project
 * Download the application with git clone http://ryoung-sf/utitilies_app
 
+
 ## Local Setup
 
 **Requirements**
@@ -53,6 +55,7 @@ Demo App that makes connecting to your utility account easy!
 * [zrok.io](https://zrok.io/) --> required for webhooks and redirects in development (alternative to ngrok)
 * UtilityApi account
 
+
 **zrok.io**
 * Set up an account on zrok
 * Follow the guide to set up a public [reserved share](https://docs.zrok.io/docs/concepts/sharing-reserved/).
@@ -60,6 +63,7 @@ Demo App that makes connecting to your utility account easy!
 * In your development.rb, file add this line with the provided reserved share `config.hosts << YOUR_RESERVED_SHARE.share.zrok.io`
 * The reserved share will also be used for redirects and webhooks for UtilityAPI
 * Why use a reserved share? Without a reserved share, everytime the zrok server is reset the development.rb and the webhooks and redirect endpoints will need to be updated.  
+
 
 **UtilityAPI**
 * Visit [UtilityAPI.com](https://utilityapi.com/) and setup an account. Its **FREE**!
