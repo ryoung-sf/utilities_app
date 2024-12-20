@@ -74,7 +74,7 @@ Demo App that makes connecting to your utility account easy and track usage with
 * Locate the settings page and provide endpoints for redirects and webhooks. Follow the guide from zrok.io to enable webhooks and redirects to reach your local server.
     * redirect endpoint: https://YOUR_ZROK_SHARE/authorizations/receive
     * webhooks endpoint: https://YOUR_ZROK_SHARE/webhooks/utility_api
-* Grab your api token from the settings page and add it your secrets. This application user rails credentials.
+* Grab your api token from the settings page and add it your secrets. This application uses rails credentials.
 * Also grab your webhook secret. It's located on the settings page as well. This is necessary to confirm that the webhooks that are received and processed are from UtilityAPI and not a malicious actor.
 * Store your tokens/secret via Rails Credentials below:
     * `utility_api_token: YOUR_UTILITY_API_TOKEN`
@@ -84,7 +84,7 @@ Demo App that makes connecting to your utility account easy and track usage with
 * The application uses [Letter Opener](https://github.com/ryanb/letter_opener) in development to receive mail. All emails sent in development should open in a new tab in the browser.
 
 **Frontend**
-* Views leverage server-side render HTML via ERB with Hotwire and snippets of Javascript (JS) for required updates where necessary.
+* Views leverage server-side rendered HTML via ERB files with Hotwire and snippets of Javascript (JS) for required updates where necessary.
 * JS packaged leveraged via importmaps:
     * chartkick
     * Chart.bundle
